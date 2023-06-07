@@ -8,15 +8,16 @@ import { AllProductsComponent } from './components/all-products/all-products.com
 
 import { CartShoppingComponent } from './components/cart-shopping/cart-shopping.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     AllProductsComponent,
     FilterComponent,
-    CartShoppingComponent
+    CartShoppingComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
