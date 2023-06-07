@@ -1,0 +1,149 @@
+<h3>  Filters</h3>
+
+<div class="collapsible"  >
+  <button class="collapsible-button" (click)="togglemodelCollapsed()">Model</button>
+
+ 
+  <div class="collapsible-content" [ngClass]="{'collapsed': modelCollapsed}">
+    <div class="search-container" >
+      <form action="#">
+        <input type="text" id="search-input" name="search" placeholder="Search In Model ">
+      </form>
+  </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        Shirt
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        T-Shirts
+      </label>
+    </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Trousers
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Knitwear
+    </label>
+  </div>
+</div>
+</div>
+<br>
+<div class="collapsible">
+  <button class="collapsible-button" (click)="togglecolorCollapsed()">Color</button>
+
+ 
+  <div class="collapsible-content" [ngClass]="{'collapsed': colorCollapsed}">
+    <div class="search-container" >
+      <form action="#">
+        <input type="text" id="search-input" name="search" placeholder="Search In Color">
+      </form>
+  </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+       Red
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        White
+      </label>
+    </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Black
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Yellow
+    </label>
+  </div>
+</div>
+</div>
+<br>
+<div class="collapsible">
+  <button class="collapsible-button" (click)="togglesizeCollapsed()">Size</button>
+
+ 
+  <div class="collapsible-content" [ngClass]="{'collapsed': sizeCollapsed}">
+    <div class="search-container" >
+      <form action="#">
+        <input type="text" id="search-input" name="search" placeholder="Search In Color">
+      </form>
+  </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        XXS
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        XS
+      </label>
+    </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+       S
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      M
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+     L
+    </label>
+  </div>
+</div>
+</div>
+<br>
+<div class="collapsible">
+  <button class="collapsible-button" (click)="togglePriceRangeCollapsed()">Price Range</button>
+  <div class="collapsible-content" [ngClass]="{'collapsed': PriceRangeCollapsed}">
+ 
+  <br> <input type="range"  min="0" max="1000" id="customRange2" width="100%">
+  <br>
+  <label style="opacity: .2;" for="customRange2" class="form-label">min&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mix</label>
+  <div class="row">
+    <div class="col" style="width: 10px;">
+ 
+      <input type="number" class="form-control" id="min" name="min" placeholder="0">
+    </div>
+    <div class="col">
+ 
+      <input type="number" class="form-control" id="max" name="max" placeholder="1000">
+    </div>
+  </div>
+</div>
+
+<br><br><br>
+<div class="container" >
+  <button type="button" class="btn btn-outline-success">  &nbsp;Filter &nbsp;   </button>
+</div>
+
+
+
+
