@@ -17,7 +17,6 @@ import { CartShoppingComponent } from './components/cart-shopping/cart-shopping.
     AllProductsComponent,
     FilterComponent,
     CartShoppingComponent
-
   ],
   imports: [
     BrowserModule,
