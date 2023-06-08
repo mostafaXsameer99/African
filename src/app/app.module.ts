@@ -9,6 +9,7 @@ import { AllProductsComponent } from './components/all-products/all-products.com
 import { CartShoppingComponent } from './components/cart-shopping/cart-shopping.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     AllProductsComponent,
     FilterComponent,
     CartShoppingComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
