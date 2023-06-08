@@ -1,3 +1,7 @@
+.filter{
+  padding: 10px 50px 0px 20px;
+  background-color:rgb(255, 248, 248);
+}
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -6,14 +10,14 @@
 }
 
 .grid-item {
-  margin-top: 50px;
+  margin-top: 40px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
-  text-align: center;
+  padding: 5px;
+  text-align: start;
   display: flex;
-  flex-direction: column;
+  flex-direction:  column;
   justify-content: space-between;
   transition: all 0.3s ease-in-out;
 }
@@ -29,15 +33,31 @@
   object-fit: cover;
   border-radius: 5px;
 }
-
-.grid-item h2 {
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
+ .Pitem{
+  color: red;
+  font-weight: bold;
+ }
 
 .grid-item p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 10px;
+  font-size: .75rem;
 }
- 
+.Div-price{
+  display: inline-flex ; 
+  padding : 0px;
+  margin: 0px;
+}
+.add-to-cart-icon {
+  position: relative;
+  bottom: 48px;
+  left: 78%;;
+  width: 30px;
+  height: 30px;
+  background-color: whitesmoke;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.add-to-cart-icon .icon{
+  height: 25px; width: 25px; position: absolute; top: 8px; left: 7px;
+}
