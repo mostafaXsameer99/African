@@ -9,20 +9,24 @@ import { DesignerDashboardComponent } from './components/designer-dashboard/desi
 import { AllDesignsComponent } from './components/all-designs/all-designs.component';
 import { DesignerNavbarComponent } from './components/designer-navbar/designer-navbar.component';
 import { DesignerAddProductComponent } from './components/designer-add-product/designer-add-product.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path:"",redirectTo:"/Products", pathMatch:"full"},
+  { path: "", redirectTo: "/home", pathMatch: "full" },
+  {path:'home',component:HomeComponent},
   { path: 'shoppingCart', component: CartShoppingComponent },
   { path: "Products", component: AllProductsComponent },
-  {path:"productDetails",component:ProductDetailsComponent},
-  { path: 'designerDashboard', component: DesignerNavbarComponent,
-   children: [
-    { path: 'home', component: DesignerDashboardComponent },
-    { path: 'allDesigns', component: AllDesignsComponent },
-    { path: 'addProduct', component: DesignerAddProductComponent },
-    // add more routes as needed
-  ]},
-  {path:"**",component:NotFoundComponent}
+  { path: "productDetails", component: ProductDetailsComponent },
+  {
+    path: 'designerDashboard', component: DesignerNavbarComponent,
+    children: [
+      { path: 'home', component: DesignerDashboardComponent },
+      { path: 'allDesigns', component: AllDesignsComponent },
+      { path: 'addProduct', component: DesignerAddProductComponent },
+      // add more routes as needed
+    ]
+  },
+  { path: "**", component: NotFoundComponent }
 ];
 
 @NgModule({

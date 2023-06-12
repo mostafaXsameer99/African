@@ -14,6 +14,9 @@ import { DesignerDashboardComponent } from './components/designer-dashboard/desi
 import { AllDesignsComponent } from './components/all-designs/all-designs.component';
 import { DesignerNavbarComponent } from './components/designer-navbar/designer-navbar.component';
 import { DesignerAddProductComponent } from './components/designer-add-product/designer-add-product.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { DesignerAddProductComponent } from './components/designer-add-product/d
     DesignerDashboardComponent,
     AllDesignsComponent,
     DesignerNavbarComponent,
-    DesignerAddProductComponent
+    DesignerAddProductComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
