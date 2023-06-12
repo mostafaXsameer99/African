@@ -1,20 +1,20 @@
+.filter {
+  padding: 10px 50px 0px 20px;
+  background-color: rgb(255, 248, 248);
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: auto;
-  // grid-row: 4;
   grid-gap: 3px;
   padding: 0px 10px;
-  // border: 1px solid red;
 }
 
 .grid-item {
-  margin-top: 50px;
+  margin-top: 40px;
   background-color: #fff;
-  // border: 1px solid #ccc;
-  // border-radius: 5px;
-  // padding: 10px;
-  // text-align: center;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -78,16 +78,7 @@
   // border-radius: 5px;
 }
 
-// .grid-item h2 {
-//   font-size: 1.2rem;
-//   margin-bottom: 5px;
-// }
 
-// .grid-item p {
-//   font-size: 1rem;
-//   color: #666;
-//   margin-bottom: 10px;
-// }
 .product-card__info {
   flex: 0 0 200px;
   /* Set the desired width */
@@ -102,4 +93,5 @@
   /* Hide any overflowing content */
   text-overflow: ellipsis;
   /* Add ellipsis (...) for truncated text */
+
 }

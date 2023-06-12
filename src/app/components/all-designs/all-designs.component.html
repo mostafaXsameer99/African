@@ -1,0 +1,22 @@
+<!-- designs -->
+<section class="table_section container">
+    <h2 class="mt-3">Your Designs</h2>
+    <table class="table border-top mt-3">
+        <tbody>
+          <tr *ngFor="let design of designs">
+            <td><img height="200" width="150" src={{design.img}} alt="img"></td>
+            <td class="detailscol">
+                <h5 class="fw-bold">{{design.title}}</h5>
+            </td>
+            <td>
+                <h6 class="fw-bold table_students">{{design.buy}} times buy</h6>
+            </td>
+            <td>
+                <h6 class="fw-bold table_price">{{design.totalAmount}}$</h6>
+            </td>
+            <td><i class="fas fa-edit edit_btn text-primary"  data-bs-toggle="modal" data-bs-target="#editcourse1"></i></td>
+            <td><i class="fa fa-trash remove_btn text-danger"></i></td>
+          </tr>
+        </tbody>
+      </table>
+  </section>

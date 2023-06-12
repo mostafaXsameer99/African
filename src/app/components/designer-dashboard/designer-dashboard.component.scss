@@ -1,0 +1,69 @@
+    .desiginer_statistics {
+    .statistics {
+        flex-wrap: wrap;
+        .statistic {
+            display: flex;
+        gap: 0.5rem;
+        flex: 45%;
+            i {
+                font-size: small;
+                margin-top: 0.5rem;
+            }
+            p {
+                font-size: large;
+            }
+        }
+    }
+    @media (min-width: 768px) {
+        .desiginer_statistics{
+            .statistics {
+                width: 70%;
+                margin-top: 0.8rem;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+// catgeories
+.tab-line {
+    height: 2px;
+    background-color: grey;
+    font-weight: bold;
+  }
+.categories{
+    a{
+        color: black;
+        cursor: pointer;
+    }
+    .catgeoryItems{
+        img{
+            width: 150px;
+            height: 200px;
+            margin-right: 15px;
+            margin-block: 5px;
+            transition: all .5s ease;
+            border-radius: 10px;
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+        .downloadBtn{
+            margin-right: 15px;
+            margin-block: 5px;
+        }
+    }
+}
+// desings
+.table_section{
+    
+    .remove_btn,.edit_btn{
+        padding-inline: 0;
+        font-size: larger;
+        margin-top: 5px;
+        transition: all .5s ease;
+        &:hover{
+        transform: scale(1.1);
+         cursor: pointer;
+        }
+    }
+}
