@@ -1,0 +1,94 @@
+
+  <!-- statistics -->
+  <section class="desiginer_statistics container my-3">
+    <h2>Your statistics at African platform</h2>
+    <div class="statistics d-flex flex-column gap-2">
+        <div class="statistic">
+            <i class="fa fa-check"></i>
+            <p>you have 5 products at African, hope for more</p>
+        </div>
+        <div class="statistic">
+            <i class="fa fa-check"></i>
+            <p>Your balance = 780$</p>
+        </div>
+        <div class="statistic">
+            <i class="fa fa-check"></i>
+            <p>120 clients buy your products</p>
+        </div>
+    </div>
+</section>
+<!-- categories -->
+<section class="container mt-5 categories">
+    <h2 class="my-4">Categories</h2>
+    <div class="row">
+        <div class="col">
+          <ul class="nav nav-tabs">
+            <li class="nav-item" [ngClass]="{'tab-line': currentTab === 1}">
+              <a class="nav-link" (click)="showTab(1)">Clothes</a>
+            </li>
+            <li class="nav-item" [ngClass]="{'tab-line': currentTab === 2}">
+              <a class="nav-link" (click)="showTab(2)">Glasses</a>
+            </li>
+            <li class="nav-item" [ngClass]="{'tab-line': currentTab === 3}">
+              <a class="nav-link" (click)="showTab(3)">asdf</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="row mt-3 mb-5 catgeoryItems">
+        <div class="col">
+          <div class="tab-content">
+            <div class="d-flex flex-wrap" *ngIf="currentTab === 1">
+              <ng-container *ngFor="let item of category1">
+                <div class="d-flex flex-column">
+                  <img src="{{ item }}" alt="">
+                  <button class="downloadBtn btn btn-secondary" (click)="downloadImage(item)">Download</button>
+                </div>
+              </ng-container>
+            </div>
+            <div class="d-flex flex-wrap" *ngIf="currentTab === 2">
+              <ng-container *ngFor="let item of category2">
+                <div class="d-flex flex-column">
+                  <img src="{{ item }}" alt="">
+                  <button class="downloadBtn btn btn-secondary" (click)="downloadImage(item)">Download</button>
+                </div>
+              </ng-container>
+            </div>
+            <div class="d-flex flex-wrap" *ngIf="currentTab === 3">
+              <ng-container *ngFor="let item of category3">
+                <div class="d-flex flex-column">
+                  <img src="{{ item }}" alt="">
+                  <button class="downloadBtn btn btn-secondary" (click)="downloadImage(item)">Download</button>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<!-- designs -->
+<section class="table_section container">
+  <h2>Your Designs</h2>
+  <table class="table border-top mt-3">
+      <tbody>
+        <tr *ngFor="let design of designs">
+          <td><img height="200" width="150" src={{design.img}} alt="img"></td>
+          <td class="detailscol">
+              <h5 class="fw-bold">{{design.title}}</h5>
+          </td>
+          <td>
+              <h6 class="fw-bold table_students">{{design.buy}} times buy</h6>
+          </td>
+          <td>
+              <h6 class="fw-bold table_price">{{design.totalAmount}}$</h6>
+          </td>
+          <td><i class="fas fa-edit edit_btn text-primary"  data-bs-toggle="modal" data-bs-target="#editcourse1"></i></td>
+          <td><i class="fa fa-trash remove_btn text-danger"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <form class="text-center my-3" action="">
+      <a class="btn btn-secondary" routerLink="/designerDashboard/allDesigns">All Designs</a>
+    </form>
+</section>

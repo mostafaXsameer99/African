@@ -10,6 +10,10 @@ import { CartShoppingComponent } from './components/cart-shopping/cart-shopping.
 import { FilterComponent } from './components/filter/filter.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { DesignerDashboardComponent } from './components/designer-dashboard/designer-dashboard.component';
+import { AllDesignsComponent } from './components/all-designs/all-designs.component';
+import { DesignerNavbarComponent } from './components/designer-navbar/designer-navbar.component';
+import { DesignerAddProductComponent } from './components/designer-add-product/designer-add-product.component';
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FilterComponent,
     CartShoppingComponent,
     ProductDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DesignerDashboardComponent,
+    AllDesignsComponent,
+    DesignerNavbarComponent,
+    DesignerAddProductComponent
   ],
   imports: [
     BrowserModule,
