@@ -2,10 +2,29 @@
     box-sizing: border-box;
 }
 
+
+// .grid-container {
+//     display: grid;
+//     grid-template-columns: 9fr 3fr;
+//     grid-auto-rows: auto;
+//     grid-gap: 3px;
+//     padding: 0px 10px;
+// }
+
+// .grid-item {
+//     margin-top: 50px;
+//     background-color: #fff;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+// }
+
+
 .product-card__price {
     font-weight: bolder;
     margin: 0px 10px;
 }
+
 
 .product-card__discount {
     color: #c41f28;
@@ -27,29 +46,139 @@
     color: #23252a;
 }
 
+
+.row {
+    display: flex;
+    // border: 1px solid red;
+}
+
 .product-card__button {
-    text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
+}
 
-    & button {
-        background-color: #23252a;
-        color: #ffffff;
-        padding: 10px 20px;
-    }
+.product-card__button button {
+    width: 100%;
+    background-color: #23252a;
+    color: #ffffff;
+    padding: 5px 20px;
+}
 
-    button:hover {
-        background-color: #ffffff;
-        color: #23252a;
-    }
+.product-card__button button:hover {
+    background-color: #ffffff;
+    color: #23252a;
+}
+
+.product-card__size__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .product-card__size__buttons button {
+    flex: 1 0 calc(20% - 10px);
     background-color: #ffffff;
     margin: 5px;
     padding: 5px;
     border: none;
 }
 
-.product-card__size__buttons button:hover {
-    border: 1px solid black;
+.selected {
+    // background-color: red !important;
+    border: 1px solid black !important;
+}
+
+.disabled-button {
+    pointer-events: none;
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.product_info {
+    margin-top: 20px;
+}
+
+.product_info li {
+    list-style-type: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* semi-transparent black */
+    display: none;
+    /* hide the overlay by default */
+    opacity: 0;
+    /* set initial opacity to 0 */
+    transition: opacity 0.3s ease;
+    /* apply transition to the opacity property */
+    animation: showOverlay 0.3s forwards;
+    /* start the animation after 1 second and keep its final state */
+    z-index: 999;
+}
+
+@keyframes showOverlay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#overlay.show {
+    display: block;
+    /* show the overlay */
+}
+
+#overlay-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 500px;
+    /* adjust the width as needed */
+    background-color: #fff;
+    padding: 30px;
+    // text-align: center;
+    z-index: 999;
+}
+
+#overlay-content h2 {
+    text-align: center;
+    margin: 20px;
+}
+
+#overlay-content li {
+    margin: 20px 0px;
+}
+
+#close-overlay {
+    margin-top: 20px;
 }

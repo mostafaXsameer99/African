@@ -2,42 +2,104 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: auto;
-  grid-gap: 10px;
+  // grid-row: 4;
+  grid-gap: 3px;
+  padding: 0px 10px;
+  // border: 1px solid red;
 }
 
 .grid-item {
   margin-top: 50px;
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
+  // border: 1px solid #ccc;
+  // border-radius: 5px;
+  // padding: 10px;
+  // text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.3s ease-in-out;
 }
 
-.grid-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.add-to-cart-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 6%;
+  left: 85%;
+  width: 30px;
+  height: 50px;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 100%;
+  // border: 1px solid red;
+  cursor: pointer;
+}
+
+.heart-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 65%;
+  left: 85%;
+  width: 30px;
+  height: 50px;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.cartIcon {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 65%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.heartIcon {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 65%;
+  left: 63%;
+  transform: translate(-50%, -50%);
 }
 
 .grid-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 5px;
+  // border-radius: 5px;
 }
 
-.grid-item h2 {
-  font-size: 1.2rem;
-  margin-bottom: 5px;
+// .grid-item h2 {
+//   font-size: 1.2rem;
+//   margin-bottom: 5px;
+// }
+
+// .grid-item p {
+//   font-size: 1rem;
+//   color: #666;
+//   margin-bottom: 10px;
+// }
+.product-card__info {
+  flex: 0 0 200px;
+  /* Set the desired width */
+  height: 100px;
+  /* Set the desired height */
 }
 
-.grid-item p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 10px;
+.product-card__info span {
+  white-space: nowrap;
+  /* Display the name in one line */
+  overflow: hidden;
+  /* Hide any overflowing content */
+  text-overflow: ellipsis;
+  /* Add ellipsis (...) for truncated text */
 }
- 

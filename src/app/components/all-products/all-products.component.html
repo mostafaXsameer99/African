@@ -1,118 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div style="display:flex;">
+      <app-filter style="padding: 10px 50px 0px 20px;background-color:#f9f9f9"></app-filter>
 
+      <div class="grid-container" style="width: 100%; ">
 
-<div style="display:flex;">
-  <app-filter style="padding: 10px 50px 0px 20px;background-color:rgb(255, 248, 248);"></app-filter>
-  <div class="grid-container" style="width: 100%; "  >
-      <div class="grid-item">
-        <img [src]="image1"  alt="Item 1">
+        <div class="grid-item" *ngFor="let item of products">
+          <img [src]="item.image">
 
-        <h2>Item 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p>10.00$</p>
+          <div class="add-to-cart-icon">
+            <i class="fa-solid fa-cart-plus cartIcon"></i>
+          </div>
+          
+          <div class="heart-icon">
+            <i class="fa-regular fa-heart heartIcon"></i>
+            
+          </div>
+
+          <div class="product-card__info">
+            <span style="font-size: smaller;">{{item.name}}</span>
+            <br>
+            <span style="font-weight: bold;">{{item.price}}EGP</span>
+            <br>
+            <span style="color: #c41f28;" *ngIf="item.sale">40% Discount <span
+                style="font-weight: bold;">{{item.salePrice}}EGP</span></span>
+          </div>
+        </div>
       </div>
-      <div class="grid-item">
-        <img [src]="image2" alt="Item 2">
-        <h2>Item 2</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p>10.00$</p>
-      </div>
-      <div class="grid-item">
-        <img [src]="image1" alt="Item 3">
-        <h2>Item 3</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p>10.00$</p>
-      </div>
-      <!-- Add more items here -->
-      <div class="grid-item">
-          <img [src]="image1"  alt="Item 1">
-          <h2>Item 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-        <div class="grid-item">
-          <img [src]="image2" alt="Item 2">
-          <h2>Item 2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-        <div class="grid-item">
-          <img [src]="image1" alt="Item 3">
-          <h2>Item 3</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-         <!-- Add more items here -->
-      <div class="grid-item">
-          <img [src]="image1"  alt="Item 1">
-          <h2>Item 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-        <div class="grid-item">
-          <img [src]="image2" alt="Item 2">
-          <h2>Item 2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-        <div class="grid-item">
-          <img [src]="image1" alt="Item 3">
-          <h2>Item 3</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-            <!-- Add more items here -->
-      <div class="grid-item">
-          <img [src]="image1"  alt="Item 1">
-          <h2>Item 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-        <div class="grid-item">
-          <img [src]="image2" alt="Item 2">
-          <h2>Item 2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-        <div class="grid-item">
-          <img [src]="image1" alt="Item 3">
-          <h2>Item 3</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-         <!-- Add more items here -->
-      <div class="grid-item">
-          <img [src]="image1"  alt="Item 1">
-          <h2>Item 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-        <div class="grid-item">
-          <img [src]="image2" alt="Item 2">
-          <h2>Item 2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
-        <div class="grid-item">
-          <img [src]="image1" alt="Item 3">
-          <h2>Item 3</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>10.00$</p>
-        </div>
     </div>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

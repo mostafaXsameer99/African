@@ -1,4 +1,45 @@
 <div class="container">
+
+    <!-- Product Information Overlay -->
+    <div id="productDetailsOverlay" class="overlay"
+        [ngStyle]="{'display': overlayVisible === 'productDetails' ? 'block' : 'none'}">
+        <div id="overlay-content">
+            <div style="display: flex;  justify-content: space-between;">
+                <h2>Product Details</h2>
+                <i class="fa-solid fa-xmark" id="close-overlay" (click)="closeOverlay()" style="color: #000000;"></i>
+            </div>
+            <h4>Product Information</h4>
+            <ul>
+                <li> Model Measurements: Height: 1.87 Waist: 74 </li>
+                <li>Sample size: M</li>
+                <li> Main Fabric Content: : Cotton 100%</li>
+                <li> Product group: : MAN T-Shirt</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Delivery Information Overlay -->
+    <div id="deliveryInformationOverlay" class="overlay"
+        [ngStyle]="{'display': overlayVisible === 'deliveryInformation' ? 'block' : 'none'}">
+        <div id="overlay-content">
+            <div style="display: flex;  justify-content: space-between;">
+                <h2>Delivery Information</h2>
+                <i class="fa-solid fa-xmark" id="close-overlay" (click)="closeOverlay()" style="color: #000000;"></i>
+            </div>
+            <h4>Delivery Information</h4>
+            <ul>
+                <li>Delivery by Cargo</li>
+                <li>Your order from defacto.com/en-eg will be delivered to your address by cargo.</li>
+                <li>The shipping fee is fixed and 40 EGP.</li>
+                <li>You can pay cash on delivery.</li>
+                <li>Shipping over 599 EGP is free.</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
     <div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -12,19 +53,20 @@
     <div class="product-card">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-8 col-lg-9 ">
+                <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-12 col-md-12 col-lg-6">
-                            <img src="./../../../assets/img/front.webp" style="max-width: 800px;max-height: 700px;">
+                        <div class="col-md-6">
+                            <img src="./../../../assets/img/item1_front.webp" style="width: 100%; height: auto;">
                         </div>
-                        <div class="col-12 col-md-12 col-lg-6">
-                            <img src="./../../../assets/img/back.jpg" style="max-width: 800px;max-height: 700px;">
+                        <div class="col-md-6">
+                            <img src="./../../../assets/img/item1_back.jpg" style="width: 100%; height: auto;">
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 col-lg-3">
+
+                <div class="col-lg-3">
                     <div class="row">
-                        <div class="col-12 col-md-10 col-lg-10 ">
+                        <div class="col-md-10">
                             <h6>Comfort Fit Jean-Michel Basquiat Lisansl Crew Neck T-Shirt</h6>
                             <h6>599 EGP</h6>
                             <div class="product-card__discount">
@@ -32,33 +74,44 @@
                             </div>
                             <div class="product-card__code">Product Code: Z7217AZBG732</div>
                         </div>
-                        <div class="col-12 col-md-2 col-lg-2 ">
-                            <h6>like</h6><br>
-                            <h6>share</h6>
+                        <div class="col-md-2">
+                            <i class="fa-regular fa-heart"></i><br>
                         </div>
                     </div>
                     <div class="row product-card__size">
                         <div class="product-card__size__title">Size Options</div>
 
                         <div class="d-flex flex-wrap product-card__size__buttons" title="Please select size">
-
-                            <button type="button" title="Please choose size" value="XS"> XS</button>
-
-                            <button type="button" title="Please choose size" value="S">S</button>
-
-                            <button type="button" title="Please choose size" value="M">M</button>
-
-                            <button type="button" title="Please choose size" value="L">L</button>
-
-                            <button type="button" title="Please choose size" value="XL">XL</button>
-
-                            <button type="button" title="Please choose size" value="XXL"> XXL</button>
-
+                            <button type="button" title="Please choose size" value="S"
+                                [class.selected]="selectedSize === 'S'" (click)="selectSize('S')">S</button>
+                            <button type="button" title="Please choose size" value="M"
+                                [class.selected]="selectedSize === 'M'" (click)="selectSize('M')">M</button>
+                            <button type="button" title="Please choose size" value="L"
+                                [class.selected]="selectedSize === 'L'" (click)="selectSize('L')">L</button>
+                            <button type="button" title="Please choose size" value="XL"
+                                [class.selected]="selectedSize === 'XL'" (click)="selectSize('XL')">XL</button>
+                            <button type="button" title="Please choose size" value="XXL"
+                                [class.selected]="selectedSize === 'XXL'" (click)="selectSize('XXL')">XXL</button>
                         </div>
-
                     </div>
                     <div class="row">
-                        <div class="product-card__button"><button class="addToCart">ADD TO CART</button></div>
+                        <div class="product-card__button">
+                            <button class="addToCart" [class.disabled-button]="selectedSize === ''">ADD TO CART</button>
+                        </div>
+                    </div>
+                    <div class="row product_info">
+                        <ul>
+                            <li><a href="#" (click)="openOverlay($event, 'productDetails')">
+                                    <div style="display: flex; justify-content: space-between;"><span>Product
+                                            Details</span> <span>></span></div>
+                                </a>
+                            </li>
+                            <li><a href="#" (click)="openOverlay($event, 'deliveryInformation')">
+                                    <div style="display: flex; justify-content: space-between;"><span>delivery
+                                            Information</span> <span>X</span></div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
