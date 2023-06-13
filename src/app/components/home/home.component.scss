@@ -1,88 +1,84 @@
-#header{
+#header {
 
-    // background-image: url(../../../assets/img/ahmed.jpg) ;width: 100%  ;
-    background-size: cover; 
-  background-position: center center; 
-  height: 100vh; 
-
-    
+  background-image: url(../../../assets/img/banner.webp);
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
 }
 
-#button{
-background-color: white;
-color: rgb(85, 85, 85);
-padding: 10px 28px;
-border-radius: 25px;
-border: 1px solid rgb(85, 85, 85);
-}
-#button:hover{
-background-color: pink;
-color: white;
-border-color: pink;
+#button {
+  background-color: white;
+  color: rgb(85, 85, 85);
+  padding: 10px 28px;
+  border-radius: 25px;
+  border: 1px solid rgb(85, 85, 85);
 }
 
-.carousel-inner h1{
-font-size: 60px;
+#button:hover {
+  background-color: pink;
+  color: white;
+  border-color: pink;
+}
+
+.carousel-inner h1 {
+  font-size: 60px;
 
 
 }
-.carousel-item.btn{
-border-color: white!important;
+
+.carousel-item.btn {
+  border-color: white !important;
 
 }
-.carousel-item.btn:hover{
-background-color: pink!important;
+
+.carousel-item.btn:hover {
+  background-color: pink !important;
 
 }
 
 ////////////////
 
-#top_cards{
-margin-top: 30px;
-font-family: 'Roboto slap',serif;
-display: block;
+// #top_cards {
+//   margin-top: 30px;
+//   font-family: 'Roboto slap', serif;
+//   display: block;
+// }
+
+.card img {
+  height: 100vh;
+  cursor: pointer;
 }
 
-.card img{
-height: 60vh;
-
-}
-
-#top_cards h5{
-color: black;
-font-weight: bold;
-
-}
-.Cheak{
-
-  width: 150px;
-  height: 33px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  background: transparent;
-  color: rgb(0, 0, 0);
-border: 2px solid black;
-transition: 0.5s ease;
-cursor: pointer;
-}
-
- .Cheak:hover{
-background-color: pink;
-color: white;
-
-}
-.card:hover{
+.card img:hover {
   transition: transform .2s;
   transform: scale(1.2);
+}
 
+.card {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  overflow: hidden;
+  position: relative;
 }
 
 
+.centered-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-/////media queries
-
-// @media(min-width:992px){
-//   .nav-item{
-//     border-bottom: none;
-//   }
-// }
+.Cheak {
+  color: white;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 150px;
+  height: 50px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  transition: 0.5s ease;
+  font-size: x-large;
+}

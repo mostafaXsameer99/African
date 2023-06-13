@@ -48,6 +48,7 @@ export class AllProductsComponent {
         sale: true,
         salePrice: 405
       },
+      
     ]
   }
 
