@@ -1,7 +1,8 @@
-<div class="container">
+<app-header class="app-header"></app-header>
+<div class="container mt-5">
 
     <!-- Product Information Overlay -->
-    <div id="productDetailsOverlay" class="overlay"
+    <div id="productDetailsOverlay" class="overlay "
         [ngStyle]="{'display': overlayVisible === 'productDetails' ? 'block' : 'none'}">
         <div id="overlay-content">
             <div style="display: flex;  justify-content: space-between;">
@@ -18,7 +19,7 @@
         </div>
     </div>
     <!-- Delivery Information Overlay -->
-    <div id="deliveryInformationOverlay" class="overlay"
+    <div id="deliveryInformationOverlay" class="overlay "
         [ngStyle]="{'display': overlayVisible === 'deliveryInformation' ? 'block' : 'none'}">
         <div id="overlay-content">
             <div style="display: flex;  justify-content: space-between;">
@@ -108,7 +109,7 @@
                             </li>
                             <li><a href="#" (click)="openOverlay($event, 'deliveryInformation')">
                                     <div style="display: flex; justify-content: space-between;"><span>delivery
-                                            Information</span> <span>X</span></div>
+                                            Information</span> <span>></span></div>
                                 </a>
                             </li>
                         </ul>

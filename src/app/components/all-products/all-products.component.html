@@ -1,5 +1,5 @@
-
-<div class="container">
+<app-header></app-header>
+<div class="container mt-5">
   <div class="row">
     <div style="display:flex;">
       <app-filter style="padding: 10px 50px 0px 20px;background-color:#f9f9f9"></app-filter>
@@ -9,14 +9,13 @@
         <div class="grid-item" *ngFor="let item of products">
           <img [src]="item.image">
 
-          <div class="add-to-cart-icon">
+          <!-- <div class="add-to-cart-icon">
             <i class="fa-solid fa-cart-plus cartIcon"></i>
           </div>
           
           <div class="heart-icon">
             <i class="fa-regular fa-heart heartIcon"></i>
-            
-          </div>
+          </div> -->
 
           <div class="product-card__info">
             <span style="font-size: smaller;">{{item.name}}</span>
