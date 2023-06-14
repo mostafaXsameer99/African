@@ -1,11 +1,11 @@
 <app-header></app-header>
-<div class="container" *ngIf="cartSize>=1">
+<div class="container" *ngIf="cart.length>=1">
   <div class="row mt-4  py-2">
-    <span style="font-weight: 600; font-size: x-large;">Shopping Cart ({{cartSize}} Product)</span>
+    <span style="font-weight: 600; font-size: x-large;">Shopping Cart ({{cart.length}} Product)</span>
   </div>
   <div class="row mb-4 mt-2">
     <div class="col-md-9 col-lg-9 ">
-      <div class="row free-shopping py-3 "*ngIf="totalSale>600 ">
+      <div class="row free-shopping py-3 " *ngIf="totalSale>600 ">
         <span>You got the <span style="font-weight: 600;">free shipping</span> opportunity!</span>
       </div>
       <div class="row  border mt-2">
@@ -96,14 +96,14 @@
             <!-- discounts -->
             <div class="row mt-2" style="color: lightgreen;">
               <div class="col-md-8 d-flex justify-content-start">
-                <span style="font-weight: 200;">//discount</span>
+                <span style="font-weight: 200;">Sale</span>
               </div>
               <div class="col-md-4 d-flex justify-content-end">
-                <span style="font-weight: 400;">-40 EGP</span>
+                <span style="font-weight: 400;">-{{total-totalSale}} EGP</span>
               </div>
             </div>
             <!-- conditional free Delivery -->
-            <div class="row mt-2" style="color: lightgreen;">
+            <div class="row mt-2" style="color: lightgreen;" *ngIf="totalSale >600">
               <div class="col-md-8 d-flex justify-content-start">
                 <span style="font-weight: 200;">Free Delivery</span>
               </div>
@@ -134,7 +134,7 @@
     </div>
   </div>
 </div>
-<div class="container" *ngIf="cartSize==0">
+<div class="container" *ngIf="cart.length==0">
   <div class="row mt-5 d-flex justify-content-center align-items-center">
     <img src="../../../assets/img/shopping-bag-svgrepo-com (1).svg" width="200rem" height="200rem" alt="">
   </div>

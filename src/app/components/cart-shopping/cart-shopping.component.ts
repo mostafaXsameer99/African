@@ -20,15 +20,9 @@ export class CartShoppingComponent {
   }
 
 
-  get cartSize(): number {
-    // console.log(this.cart.length);
-
-    return this.cart.length;
-  }
 
   selectSize(size: string) {
     this.selectedSize = size;
-    // console.log('Selected size:', this.selectedSize);
   }
   removeItem(id: any) {
     const index = this.cart.findIndex(item => item.id === id);
@@ -71,20 +65,31 @@ export class CartShoppingComponent {
 
   calculateTotal(): void {
     let total = 0;
+
     for (const item of this.cart) {
       total += item.orderCount * item.price;
     }
-    this.total = total;
-    console.log(this.total);
+
+    if (total > 600) {
+      this.total = total;
+    } else {
+      this.total = total + 60;
+    }
+
   }
 
   calculateTotalSale(): void {
     let total = 0;
+
     for (const item of this.cart) {
       total += item.orderCount * item.salePrice;
     }
-    this.totalSale = total;
-    console.log(this.totalSale);
+
+    if (total > 600) {
+      this.totalSale = total;
+    } else {
+      this.totalSale = total + 60;
+    }
   }
 
 }
