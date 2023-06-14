@@ -1,65 +1,65 @@
 [
   {
     "id": 1,
-    "name": "Comfort Fit Crew Neck T-Shirt",
+    "name": "Item_1",
     "price": 600,
-    "image": "https://picsum.photos/1500/2250",
+    "image": "https://picsum.photos/id/1/1500/2250",
     "sale": true,
     "salePrice": 399
   },
   {
     "id": 2,
-    "name": "Comfort Fit  Crew Neck T-Shirt",
+    "name": "Item_2",
     "price": 800,
-    "image": "https://picsum.photos/1500/2250",
+    "image": "https://picsum.photos/id/25/1500/2250",
     "sale": true,
     "salePrice": 500
   },
   {
     "id": 3,
-    "name": "Comfort Fit  Crew Neck T-Shirt",
+    "name": "Item_3",
     "price": 700,
-    "image": "https://picsum.photos/1500/2250",
+    "image": "https://picsum.photos/id/50/1500/2250",
     "sale": true,
     "salePrice": 450
   },
   {
     "id": 4,
-    "name": "Relax Fit Crew Neck T-Shirt",
+    "name": "Item_4",
     "price": 494,
-    "image": "https://picsum.photos/1500/2250",
+    "image": "https://picsum.photos/id/75/1500/2250",
     "sale": true,
     "salePrice": 405
   },
   {
     "id": 5,
-    "name": "Comfort Fit Crew Neck T-Shirt",
+    "name": "Item_5",
     "price": 600,
-    "image": "https://picsum.photos/1500/2250",
+    "image": "https://picsum.photos/id/100/1500/2250",
     "sale": true,
     "salePrice": 399
   },
   {
     "id": 6,
-    "name": "Comfort Fit  Crew Neck T-Shirt",
+    "name": "Item_6",
     "price": 800,
-    "image": "https://picsum.photos/1500/2250",
+    "image": "https://picsum.photos/id/125/1500/2250",
     "sale": true,
     "salePrice": 500
   },
   {
     "id": 7,
-    "name": "Comfort Fit  Crew Neck T-Shirt",
+    "name": "Item_7",
     "price": 700,
-    "image": "https://picsum.photos/1500/2250",
+    "image": "https://picsum.photos/id/151/1500/2250",
     "sale": true,
     "salePrice": 450
   },
   {
     "id": 8,
-    "name": "Relax Fit Crew Neck T-Shirt",
+    "name": "Item_8",
     "price": 494,
-    "image": "https://picsum.photos/1500/2250",
+    "image": "https://picsum.photos/id/175/1500/2250",
     "sale": true,
     "salePrice": 405
   }

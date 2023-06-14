@@ -15,6 +15,9 @@
         <span style="font-weight: bold;">{{data.price}}EGP</span>
         <br>
         <span style="color: #c41f28;" *ngIf="data.sale">40% Discount <span
-                style="font-weight: bold;">{{data.salePrice}}EGP</span></span>
+                style="font-weight: bold;">{{data.salePrice}}EGP</span>
+        </span>
+        <br>
+        <button class="btn btn-danger" (click)="add()">Add To Cart</button>
     </div>
 </div>

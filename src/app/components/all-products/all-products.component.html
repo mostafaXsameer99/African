@@ -5,7 +5,7 @@
       <app-filter style="padding: 10px 50px 0px 20px;background-color:#f9f9f9"></app-filter>
       <div class="grid-container" style="width: 100%; ">
         <div *ngFor="let item of products">
-          <app-product [data]="item"></app-product>
+          <app-product [data]="item" (item)="addToCart($event)"></app-product>
         </div>
       </div>
     </div>
