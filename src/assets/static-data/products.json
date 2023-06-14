@@ -5,7 +5,9 @@
     "price": 600,
     "image": "https://picsum.photos/id/1/1500/2250",
     "sale": true,
-    "salePrice": 399
+    "salePrice": 399,
+    "stock":1,
+    "orderCount":1
   },
   {
     "id": 2,
@@ -13,7 +15,9 @@
     "price": 800,
     "image": "https://picsum.photos/id/25/1500/2250",
     "sale": true,
-    "salePrice": 500
+    "salePrice": 500,
+    "stock":50,
+    "orderCount":1
   },
   {
     "id": 3,
@@ -21,7 +25,9 @@
     "price": 700,
     "image": "https://picsum.photos/id/50/1500/2250",
     "sale": true,
-    "salePrice": 450
+    "salePrice": 450,
+    "stock":50,
+    "orderCount":1
   },
   {
     "id": 4,
@@ -29,7 +35,9 @@
     "price": 494,
     "image": "https://picsum.photos/id/75/1500/2250",
     "sale": true,
-    "salePrice": 405
+    "salePrice": 405,
+    "stock":50,
+    "orderCount":1
   },
   {
     "id": 5,
@@ -37,7 +45,9 @@
     "price": 600,
     "image": "https://picsum.photos/id/100/1500/2250",
     "sale": true,
-    "salePrice": 399
+    "salePrice": 399,
+    "stock":50,
+    "orderCount":1
   },
   {
     "id": 6,
@@ -45,7 +55,9 @@
     "price": 800,
     "image": "https://picsum.photos/id/125/1500/2250",
     "sale": true,
-    "salePrice": 500
+    "salePrice": 500,
+    "stock":50,
+    "orderCount":1
   },
   {
     "id": 7,
@@ -53,7 +65,10 @@
     "price": 700,
     "image": "https://picsum.photos/id/151/1500/2250",
     "sale": true,
-    "salePrice": 450
+    "salePrice": 450,
+    "stock":50,
+    "orderCount":1
+    
   },
   {
     "id": 8,
@@ -61,6 +76,9 @@
     "price": 494,
     "image": "https://picsum.photos/id/175/1500/2250",
     "sale": true,
-    "salePrice": 405
+    "salePrice": 405,
+    "stock":50,
+    "orderCount":1
+
   }
 ]

@@ -4,5 +4,7 @@
   "price": 700,
   "image": "https://picsum.photos/id/50/1500/2250",
   "sale": true,
-  "salePrice": 450
+  "salePrice": 450,
+  "stock":50,
+  "orderCount":1
 }
