@@ -1,0 +1,20 @@
+<div class="grid-item">
+    <img src="{{data.image}}">
+
+    <!-- <div class="add-to-cart-icon">
+    <i class="fa-solid fa-cart-plus cartIcon"></i>
+</div>
+
+<div class="heart-icon">
+    <i class="fa-regular fa-heart heartIcon"></i>
+</div> -->
+
+    <div class="product-card__info">
+        <span style="font-size: smaller;">{{data.name}}</span>
+        <br>
+        <span style="font-weight: bold;">{{data.price}}EGP</span>
+        <br>
+        <span style="color: #c41f28;" *ngIf="data.sale">40% Discount <span
+                style="font-weight: bold;">{{data.salePrice}}EGP</span></span>
+    </div>
+</div>

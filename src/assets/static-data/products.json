@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Comfort Fit Crew Neck T-Shirt",
+    "price": 600,
+    "image": "https://picsum.photos/1500/2250",
+    "sale": true,
+    "salePrice": 399
+  },
+  {
+    "id": 2,
+    "name": "Comfort Fit  Crew Neck T-Shirt",
+    "price": 800,
+    "image": "https://picsum.photos/1500/2250",
+    "sale": true,
+    "salePrice": 500
+  },
+  {
+    "id": 3,
+    "name": "Comfort Fit  Crew Neck T-Shirt",
+    "price": 700,
+    "image": "https://picsum.photos/1500/2250",
+    "sale": true,
+    "salePrice": 450
+  },
+  {
+    "id": 4,
+    "name": "Relax Fit Crew Neck T-Shirt",
+    "price": 494,
+    "image": "https://picsum.photos/1500/2250",
+    "sale": true,
+    "salePrice": 405
+  },
+  {
+    "id": 5,
+    "name": "Comfort Fit Crew Neck T-Shirt",
+    "price": 600,
+    "image": "https://picsum.photos/1500/2250",
+    "sale": true,
+    "salePrice": 399
+  },
+  {
+    "id": 6,
+    "name": "Comfort Fit  Crew Neck T-Shirt",
+    "price": 800,
+    "image": "https://picsum.photos/1500/2250",
+    "sale": true,
+    "salePrice": 500
+  },
+  {
+    "id": 7,
+    "name": "Comfort Fit  Crew Neck T-Shirt",
+    "price": 700,
+    "image": "https://picsum.photos/1500/2250",
+    "sale": true,
+    "salePrice": 450
+  },
+  {
+    "id": 8,
+    "name": "Relax Fit Crew Neck T-Shirt",
+    "price": 494,
+    "image": "https://picsum.photos/1500/2250",
+    "sale": true,
+    "salePrice": 405
+  }
+]
