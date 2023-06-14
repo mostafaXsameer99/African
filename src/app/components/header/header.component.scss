@@ -19,3 +19,30 @@
 
     font-weight: bold;
 }
+
+
+
+.carousel {
+    height: 2.8rem;
+    /* Adjust the height as needed */
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
+.slide-content {
+    background-color: black;
+    color: white;
+    text-align: center;
+    /* padding: 20px; */
+    height: 100%;
+}
+
+h6 {
+    padding-top: 0.8rem;
+}
