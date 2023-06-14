@@ -1,34 +1,87 @@
-@media (min-width: 1025px) {
-  .h-custom {
-    height: 100vh !important;
-  }
+// @media (min-width: 1025px) {
+//   .h-custom {
+//     height: 100vh !important;
+//   }
+// }
+
+// .card-registration .select-input.form-control[readonly]:not([disabled]) {
+//   font-size: 1rem;
+//   line-height: 2.15;
+//   padding-left: .75em;
+//   padding-right: .75em;
+// }
+
+// .card-registration .select-arrow {
+//   top: 13px;
+// }
+
+// .bg-grey {
+//   background-color: #eae8e8;
+// }
+
+// @media (min-width: 992px) {
+//   .card-registration-2 .bg-grey {
+//     border-top-right-radius: 16px;
+//     border-bottom-right-radius: 16px;
+//   }
+// }
+
+// @media (max-width: 991px) {
+//   .card-registration-2 .bg-grey {
+//     border-bottom-left-radius: 16px;
+//     border-bottom-right-radius: 16px;
+//   }
+// }
+
+// * {
+//   box-sizing: border-box;
+// }
+
+.free-shopping {
+  background-color: #f2f9f2;
+  text-align: center;
 }
 
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-  font-size: 1rem;
-  line-height: 2.15;
-  padding-left: .75em;
-  padding-right: .75em;
+// .myborder {
+//   border: 1px solid black;
+// }
+
+.product-card__size__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.card-registration .select-arrow {
-  top: 13px;
+.product-card__size__buttons button {
+  // flex: 1 0 calc(20% - 10px);
+  background-color: #ffffff;
+  margin: 5px 0px;
+  padding: 5px;
+  border: none;
 }
 
-.bg-grey {
-  background-color: #eae8e8;
+.selected {
+  // background-color: red !important;
+  border: 1px solid black !important;
 }
 
-@media (min-width: 992px) {
-  .card-registration-2 .bg-grey {
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-  }
+.product-card__button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-@media (max-width: 991px) {
-  .card-registration-2 .bg-grey {
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
-  }
+.product-card__button button {
+  width: 100%;
+  background-color: #23252a;
+  color: #ffffff;
+  padding: 5px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-card__button button:hover {
+  background-color: #ffffff;
+  color: #23252a;
 }

@@ -51,6 +51,7 @@
     background-color: #23252a;
     color: #ffffff;
     padding: 5px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .product-card__button button:hover {
