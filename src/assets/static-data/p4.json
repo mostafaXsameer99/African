@@ -1,0 +1,8 @@
+{
+  "id": 4,
+  "name": "Item_4",
+  "price": 494,
+  "image": "https://picsum.photos/id/75/1500/2250",
+  "sale": true,
+  "salePrice": 405
+}

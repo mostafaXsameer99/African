@@ -46,7 +46,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">T-shirts</li>
-                <li class="breadcrumb-item active" aria-current="page">Product Name</li>
+                <li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
             </ol>
         </nav>
     </div>
@@ -57,10 +57,10 @@
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="./../../../assets/img/item1_front.webp" style="width: 100%; height: auto;">
+                            <img src="{{product.image}}" style="width: 100%; height: auto;">
                         </div>
                         <div class="col-md-6">
-                            <img src="./../../../assets/img/item1_back.jpg" style="width: 100%; height: auto;">
+                            <img src="{{product.image}}" style="width: 100%; height: auto;">
                         </div>
                     </div>
                 </div>
@@ -68,12 +68,12 @@
                 <div class="col-lg-3">
                     <div class="row">
                         <div class="col-md-10">
-                            <h6>Comfort Fit Jean-Michel Basquiat Lisansl Crew Neck T-Shirt</h6>
-                            <h6>599 EGP</h6>
+                            <h6>{{product.name}}</h6>
+                            <h6>{{product.price}}</h6>
                             <div class="product-card__discount">
-                                <span>40% Discount</span><span class="product-card__price">359 EGP</span>
+                                <span>40% Discount</span><span class="product-card__price">{{product.salePrice}}</span>
                             </div>
-                            <div class="product-card__code">Product Code: Z7217AZBG732</div>
+                            <div class="product-card__code">Product Code: {{product.id}}</div>
                         </div>
                         <div class="col-md-2">
                             <i class="fa-regular fa-heart"></i><br>
