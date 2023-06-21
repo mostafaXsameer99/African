@@ -10,6 +10,7 @@ export class AllProductService {
   constructor(private http: HttpClient) { }
 
   private Url = '../../assets/static-data/products.json';//Json File For All Data
+  // private Url = "http://localhost:3000/products";//Json File For All Data
   private p = '../../assets/static-data/p';
 
   getAllProducts() {
