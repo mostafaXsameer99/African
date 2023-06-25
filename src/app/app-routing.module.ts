@@ -11,14 +11,22 @@ import { DesignerNavbarComponent } from './components/designer-navbar/designer-n
 import { DesignerAddProductComponent } from './components/designer-add-product/designer-add-product.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+<<<<<<< HEAD
 import { authGuard } from './gaurds/auth.guard';
+=======
+>>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
+<<<<<<< HEAD
   {path:'home',component:HomeComponent},
   { path: 'shoppingCart', component: CartShoppingComponent,canActivate:[authGuard]},
 
+=======
+  { path: 'home', component: HomeComponent },
+  { path: 'shoppingCart', component: CartShoppingComponent },
+>>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
   { path: "Products", component: AllProductsComponent },
   { path: "productDetails/:id", component: ProductDetailsComponent },
   {
@@ -30,7 +38,11 @@ const routes: Routes = [
       // add more routes as needed
     ]
   },
+<<<<<<< HEAD
   {path: "login",component:LoginComponent},
+=======
+  { path: "login", component: LoginComponent },
+>>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
   { path: "register", component: RegisterComponent },
   { path: "**", component: NotFoundComponent }
 ];

@@ -1,5 +1,6 @@
 .divider:after,
 .divider:before {
+<<<<<<< HEAD
   content: "";
   flex: 1;
   height: 1px;
@@ -46,4 +47,52 @@
   position: relative;
   margin-top: 15px;
   margin-bottom: 25px;
+=======
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+.no-outline {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 2px #23252a solid;
+    font-weight: bold;
+    font-size: large;
+>>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
+}
+
+.africanButton {
+    width: 100%;
+    background-color: #23252a;
+    color: #ffffff;
+    padding: 5px 20px;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.africanButton:hover {
+    background-color: #ffffff;
+    color: #23252a;
+}
+
+
+.floating-label-group {
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 25px;
 }

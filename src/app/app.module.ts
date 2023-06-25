@@ -26,7 +26,10 @@ import { ProductComponent } from './components/product/product.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { CoreModule } from './core/core.module';
+<<<<<<< HEAD
 import { authGuard } from './gaurds/auth.guard';
+=======
+>>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
 import { RegisterComponent } from './components/register/register.component';
 
 

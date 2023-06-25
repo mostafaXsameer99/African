@@ -109,39 +109,27 @@ a {
 
 
 
+.container {
+    position: relative;
+}
 
 #overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* semi-transparent black */
     display: none;
-    /* hide the overlay by default */
     opacity: 0;
-    /* set initial opacity to 0 */
-    transition: opacity 0.3s ease;
-    /* apply transition to the opacity property */
-    animation: showOverlay 0.3s forwards;
-    /* start the animation after 1 second and keep its final state */
-    z-index: 999;
-}
-
-@keyframes showOverlay {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    transition: opacity 0.5s ease;
+    animation: showOverlay 0.5s forwards;
 }
 
 #overlay.show {
     display: block;
-    /* show the overlay */
 }
 
 #overlay-content {

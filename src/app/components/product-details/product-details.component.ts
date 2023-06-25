@@ -7,6 +7,7 @@ import { AllProductService } from 'src/app/services/product.service';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
+
 export class ProductDetailsComponent {
 
   selectedSize: string = '';
@@ -45,7 +46,4 @@ export class ProductDetailsComponent {
       error: err => console.log(err)
     })
   }
-
-
-
 }
