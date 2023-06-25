@@ -26,6 +26,7 @@ import { ProductComponent } from './components/product/product.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { CoreModule } from './core/core.module';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -46,7 +47,8 @@ import { CoreModule } from './core/core.module';
     HeaderComponent,
     FooterComponent,
     ProductComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

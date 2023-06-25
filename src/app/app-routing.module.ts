@@ -11,10 +11,11 @@ import { DesignerNavbarComponent } from './components/designer-navbar/designer-n
 import { DesignerAddProductComponent } from './components/designer-add-product/designer-add-product.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  {path:'home',component:HomeComponent},
+  { path: 'home', component: HomeComponent },
   { path: 'shoppingCart', component: CartShoppingComponent },
   { path: "Products", component: AllProductsComponent },
   { path: "productDetails/:id", component: ProductDetailsComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
       // add more routes as needed
     ]
   },
-  {path: "login",component:LoginComponent},
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
   { path: "**", component: NotFoundComponent }
 ];
 

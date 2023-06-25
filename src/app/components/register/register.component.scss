@@ -27,23 +27,15 @@
     font-size: large;
 }
 
-.africanButton {
+ .africanButton {
     width: 100%;
     background-color: #23252a;
     color: #ffffff;
     padding: 5px 20px;
-
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .africanButton:hover {
     background-color: #ffffff;
     color: #23252a;
-}
-
-
-.floating-label-group {
-    position: relative;
-    margin-top: 15px;
-    margin-bottom: 25px;
 }
