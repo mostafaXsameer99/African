@@ -1,4 +1,4 @@
-<div class="grid-item">
+<div class="grid-item ">
     <img src="{{data.image}}" routerLink="/productDetails/{{data.id}}">
 
     <!-- <div class="add-to-cart-icon">
@@ -10,14 +10,15 @@
 </div> -->
 
     <div class="product-card__info">
-        <span style="font-size: smaller;">{{data.name}}</span>
+        <span style="font-size: large;">{{data.name}}</span>
         <br>
-        <span style="font-weight: bold;">{{data.price}}EGP</span>
+        <span style="font-weight: bold;">{{data.price}} EGP</span>
         <br>
-        <span style="color: #c41f28;" *ngIf="data.sale">40% Discount <span
+        <!-- <span style="color: #c41f28;" *ngIf="data.sale">40% Discount <span
                 style="font-weight: bold;">{{data.salePrice}}EGP</span>
-        </span>
+        </span> -->
         <br>
-        <button class="btn btn-danger" (click)="add()">Add To Cart</button>
+        <div style="text-align: center;"> <button class="africanButton" (click)="add()">Add To Cart</button></div>
+        <!-- <button class="africanButton" routerLink="//productDetails/{{data.id}}">View Details</button> -->
     </div>
 </div>
