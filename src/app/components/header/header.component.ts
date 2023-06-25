@@ -1,10 +1,62 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { HeaderService } from 'src/app/services/header.service';
+import { LoginService } from 'src/app/services/login.service';
+import { AllProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  isAuthenticate:boolean=this.logService.isAuthenticate
+  categories:any[]=[]
+  searchInput:any
+  constructor(
+    private logService:LoginService,
+    private haederSer:HeaderService,
+    private productSer: AllProductService,
+    private router:Router
+    ){
+
+  }
+  ngOnInit(): void {
+    this.getCategory()
+  }
+
+  getCategory(){
+    this.haederSer.getCategory().subscribe((res:any)=>{
+      // console.log(res)
+      this.categories=res.doc
+      console.log(this.categories[0].name)
+    })
+  }
+
+  logout(){
+    localStorage.removeItem("Token")
+    this.logService.isAuthenticate=false
+    console.log(this.logService.isAuthenticate)
+  }
+
+
+
+  getProductsByCategory(id:any){
+    console.log(id)
+    this.productSer.getProductsByCategory(id).subscribe((res:any)=>{
+      this.productSer.productsArray=res.doc
+      console.log(res.doc)
+    })
+  }
+
+
+  searchProducts(searchValue:any){
+    // console.log(ali)
+    this.productSer.getProductBySearch(searchValue).subscribe((res:any)=>{
+      // console.log(res.doc)
+      this.router.navigate(['/Products'])
+      this.productSer.productsArray=res.doc
+    })
+  }
 
 }

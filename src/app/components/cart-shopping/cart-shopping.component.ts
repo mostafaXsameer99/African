@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { loadStripe } from '@stripe/stripe-js';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-cart-shopping',
@@ -12,6 +15,11 @@ export class CartShoppingComponent {
   cart: any[] = [];
   total: number = 0
   totalSale: number = 0
+
+  constructor(
+    private shoppingSer:ShoppingCartService,
+    private http:HttpClient
+    ){}
 
   ngOnInit(): void {
     this.getCart()
@@ -55,12 +63,25 @@ export class CartShoppingComponent {
 
   completeOrder() {
     console.log("send data to database");
+    this.http.post('http://localhost:3000/checkout',{
+      cart:this.cart
+    }).subscribe(async(res:any)=>{
+      let stripe = await loadStripe('pk_test_51MQCBUEwQJXCe3Mmc3FzTRZYqCMdD0Zuv4DOLtIGqNgPleXebjlaiU7YTIqWPkIk1AW3smZQAqZQDalZIwWqyqXC00fjMq75eL')
+      stripe?.redirectToCheckout({
+        sessionId:res.id
+      })
+    })
   }
 
   getCart() {
-    if ("cart" in localStorage) {
-      this.cart = JSON.parse(localStorage.getItem("cart")!)
-    }
+    // if ("cart" in localStorage) {
+    //   this.cart = JSON.parse(localStorage.getItem("cart")!)
+    // }
+    // this.shoppingSer.getAllOrders().subscribe((res:any)=>{
+    //   this.cart=res.doc
+    // })
+    console.log(this.shoppingSer.shoppingCart)
+    this.cart=this.shoppingSer.shoppingCart
   }
 
   calculateTotal(): void {

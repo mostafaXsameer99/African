@@ -11,11 +11,14 @@ import { DesignerNavbarComponent } from './components/designer-navbar/designer-n
 import { DesignerAddProductComponent } from './components/designer-add-product/designer-add-product.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './gaurds/auth.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
   {path:'home',component:HomeComponent},
-  { path: 'shoppingCart', component: CartShoppingComponent },
+  { path: 'shoppingCart', component: CartShoppingComponent,canActivate:[authGuard]},
+
   { path: "Products", component: AllProductsComponent },
   { path: "productDetails/:id", component: ProductDetailsComponent },
   {
@@ -28,6 +31,7 @@ const routes: Routes = [
     ]
   },
   {path: "login",component:LoginComponent},
+  { path: "register", component: RegisterComponent },
   { path: "**", component: NotFoundComponent }
 ];
 

@@ -26,6 +26,8 @@ import { ProductComponent } from './components/product/product.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { CoreModule } from './core/core.module';
+import { authGuard } from './gaurds/auth.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -46,7 +48,8 @@ import { CoreModule } from './core/core.module';
     HeaderComponent,
     FooterComponent,
     ProductComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ import { CoreModule } from './core/core.module';
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     CoreModule
   ],
-  providers: [],
+  providers: [authGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

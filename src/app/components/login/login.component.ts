@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
   loginForm!:FormGroup
   constructor(
     private fb:FormBuilder,
@@ -25,9 +26,9 @@ export class LoginComponent implements OnInit {
     this.createForm()
   }
   createForm(){
-    this.loginForm=this.fb.group({
-      email:['', [Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(3),Validators.maxLength(20)]]
+     this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/)]]
     })
   }
 
@@ -36,10 +37,18 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('Token', res.token)
       this.toastr.success("success","login success")
       this.router.navigate(['/'])
+      this.ser.isAuthenticate=true
 
     })
 
 
+  }
+
+  get email() {
+    return this.loginForm.get('email');
+  }
+  get password() {
+    return this.loginForm.get('password');
   }
 
 }
