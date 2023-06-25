@@ -9,7 +9,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class AllProductService {
   constructor(private http: HttpClient) { }
 
-  private Url = '../../assets/static-data/products.json';//Json File For All Data
+  private Url = '../../assets/static-data/products.json'; //Json File For All Data
   private p = '../../assets/static-data/p';
 
   getAllProducts() {
