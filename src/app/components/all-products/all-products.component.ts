@@ -18,12 +18,17 @@ export class AllProductsComponent {
 
   ngOnInit(): void {
     this.getAllProducts()
+
   }
 
 
   getAllProducts() {
     this.service.getAllProducts().subscribe({
-      next: data => this.products = data,
+      next: (data:any) => {
+        // this.products = data.products.doc;
+        this.products=data
+    },
+
       error: err => this.errMessage = err
     });
   }

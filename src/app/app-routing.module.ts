@@ -10,6 +10,7 @@ import { AllDesignsComponent } from './components/all-designs/all-designs.compon
 import { DesignerNavbarComponent } from './components/designer-navbar/designer-navbar.component';
 import { DesignerAddProductComponent } from './components/designer-add-product/designer-add-product.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -26,6 +27,7 @@ const routes: Routes = [
       // add more routes as needed
     ]
   },
+  {path: "login",component:LoginComponent},
   { path: "**", component: NotFoundComponent }
 ];
 
