@@ -38,16 +38,19 @@
                   </div>
                 </div>
               </div>
+
+
+
               <div class="row mt-3">
                 <div class="col-md-3">
-                  <i class="fa-solid fa-trash fa-xs " style="cursor: pointer;" (click)="removeItem(item.id)"></i>
-                  <span class="mx-1" style="font-weight: 500; font-size: larger;">remove</span>
+                  <i class="fa-solid fa-trash fa-xs " style="cursor: pointer;" (click)="removeItem(item._id)"></i>
+                  <!-- <span class="mx-1" style="font-weight: 500; font-size: larger;">remove</span> -->
                 </div>
                 <div class="col-md-4">
-                  <i class="fa-solid fa-minus fa-xs" style="cursor: pointer;" *ngIf="item.orderCount>1"
-                    (click)="minusOne(item.id)"></i>
+                  <i class="fa-solid fa-minus fa-xs" style="cursor: pointer;" *ngIf="item.Quantity>=1"
+                    (click)="minusOne(item._id)"></i>
                   <span class="mx-2" style="font-weight: 500; font-size: larger;">Count {{item.orderCount}}</span>
-                  <i class="fa-solid fa-plus fa-xs" style="cursor: pointer;" (click)="plusOne(item.id)"></i>
+                  <i class="fa-solid fa-plus fa-xs" style="cursor: pointer;" (click)="plusOne(item._id)"></i>
                 </div>
                 <div class="col-md-4" *ngIf="item.stock<=2">
                   <i class="fa-solid fa-shirt " style="color: #c41f28;"></i>
@@ -57,7 +60,7 @@
               </div>
             </div>
             <div class="col-md-4 text-center d-flex  align-items-end mb-5">
-              <h4 class="myborder p-2">Total : {{item.orderCount * item.salePrice}}</h4>
+              <h4 class="myborder p-2">Total : {{item.Quantity * item.price}}</h4>
             </div>
             <hr class="mt-3" *ngIf="!lItem">
           </div>
@@ -129,7 +132,8 @@
             </div>
             <!-- Complete Order Button -->
             <div class="row mt-4 product-card__button">
-              <button (click)="completeOrder()">Complete Order</button>
+              <button (click)="safeOrder()" *ngIf="notAllowed">Save Order</button>
+              <button (click)="completeOrder()" *ngIf="!notAllowed">Complete Order</button>
             </div>
           </div>
         </div>

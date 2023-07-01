@@ -1,10 +1,3 @@
-// import { CanActivateFn } from '@angular/router';
-
-// export const authGuard: CanActivateFn = (route, state) => {
-
-//   return true;
-// };
-
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import { LoginService } from '../services/login.service';
@@ -19,7 +12,7 @@ export class authGuard implements CanActivate {
 
     canActivate(): boolean {
 
-        if (!this.authService.isAuthenticate) {
+        if (!localStorage.getItem("Token")) {
           this.toastr.error('Please log in and try again')
 
             this.router.navigate(["login"]);
@@ -31,24 +24,3 @@ export class authGuard implements CanActivate {
 
 }
 
-
-
-
-// import { Injectable } from '@angular/core';
-// import { CanActivate, Router } from '@angular/router';
-// import {  UserAuthService } from '../Services/user-auth.service';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AuthGuard implements CanActivate {
-//   constructor(private authService: UserAuthService, private router: Router) {}
-
-//   canActivate(): boolean {
-//     if (!this.authService.isAuthenticated()) {
-//       this.router.navigate(['/login']);
-//       return false;
-//     }
-//     return true;
-//   }
-// }

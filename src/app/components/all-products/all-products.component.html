@@ -4,9 +4,25 @@
     <div style="display:flex;">
       <app-filter style="padding: 10px 50px 0px 20px;background-color:#f9f9f9"></app-filter>
       <div class="grid-container" style="width: 100%; ">
-        <div *ngFor="let item of products" >
-          <app-product [data]="item" (item)="addToCart($event)"></app-product>
+        <ng-container *ngIf="products.length>=1">
+          <div *ngFor="let item of products">
+            <app-product [data]="item" (item)="addToCart($event)" id="item"></app-product>
+          </div>
+        </ng-container>
+
+
+        <div class="d-flex align-items-center justify-content-center vh-100" *ngIf="!products.length">
+          <div class="text-center">
+            <h1 class="display-1 fw-bold">404</h1>
+            <p class="fs-3"> <span class="text-danger">Opps!</span> Products not found.</p>
+            <p class="lead">
+              The products you’re looking for doesn’t exist.
+            </p>
+            <a [routerLink]="['/Products']" class="btn btn-primary">Go Home</a>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
+</div>

@@ -9,16 +9,11 @@ import { environment } from 'src/environments/environment.development';
 })
 export class AllProductService {
   public productsArray:any[]=[]
+  public foundProduct:boolean=true
   constructor(private http: HttpClient) { }
 
-<<<<<<< HEAD
   // private Url = '../../assets/static-data/products.json';//Json File For All Data
   private Url = environment.baseApi+"products";//Json File For All Data
-=======
-
-  private Url = '../../assets/static-data/products.json';//Json File For All Data
-  // private Url = "http://localhost:3000/products";//Json File For All Data
->>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
   private p = '../../assets/static-data/p';
 
   getAllProducts() {
@@ -40,5 +35,15 @@ export class AllProductService {
 
   getProductBySearch(searchValue:any){
     return this.http.get(environment.baseApi+`search?search=${searchValue}`)
+  }
+
+
+  getProductsByFilter(color:any, size:any, price:any, model:any){
+    return this.http.get(environment.baseApi+`search/filter?color=${color}&&size=${size}&&price=${price}&&model=${model}`)
+  }
+
+
+  deleteProduct(id:any){
+    return this.http.delete(environment.baseApi+`products/${id}`)
   }
 }

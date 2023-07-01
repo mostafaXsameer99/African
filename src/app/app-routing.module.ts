@@ -11,40 +11,52 @@ import { DesignerNavbarComponent } from './components/designer-navbar/designer-n
 import { DesignerAddProductComponent } from './components/designer-add-product/designer-add-product.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-<<<<<<< HEAD
 import { authGuard } from './gaurds/auth.guard';
-=======
->>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
 import { RegisterComponent } from './components/register/register.component';
+import { SidebarComponent } from './admin/sidebar/sidebar.component';
+import { AddProductComponent } from './admin/add-product/add-product.component';
+import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+import { AddNewProductComponent } from './admin/add-new-product/add-new-product.component';
+import { OrdersComponent } from './admin/orders/orders.component';
+import { UsersComponent } from './admin/users/users.component';
+import { adminGuardGuard } from './gaurds/admin-guard.guard';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/home", pathMatch: "full" },
-<<<<<<< HEAD
-  {path:'home',component:HomeComponent},
-  { path: 'shoppingCart', component: CartShoppingComponent,canActivate:[authGuard]},
-
-=======
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'shoppingCart', component: CartShoppingComponent },
->>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
-  { path: "Products", component: AllProductsComponent },
-  { path: "productDetails/:id", component: ProductDetailsComponent },
   {
-    path: 'designerDashboard', component: DesignerNavbarComponent,
+    path: 'shoppingCart',
+    component: CartShoppingComponent,
+    canActivate: [authGuard],
+  },
+
+  { path: 'Products', component: AllProductsComponent },
+  { path: 'productDetails', component: ProductDetailsComponent },
+  {
+    path: 'admin',
+    component: SidebarComponent,
+    children: [
+      { path: '', redirectTo: '/admin/product', pathMatch: 'full' },
+      { path: 'product', component: AddProductComponent },
+      { path: 'category', component: AdminCategoryComponent },
+      { path: 'order', component: OrdersComponent },
+      { path: 'users', component: UsersComponent },
+    ],
+    canActivate: [adminGuardGuard],
+  },
+  {
+    path: 'designerDashboard',
+    component: DesignerNavbarComponent,
     children: [
       { path: 'home', component: DesignerDashboardComponent },
       { path: 'allDesigns', component: AllDesignsComponent },
       { path: 'addProduct', component: DesignerAddProductComponent },
       // add more routes as needed
-    ]
+    ],
   },
-<<<<<<< HEAD
-  {path: "login",component:LoginComponent},
-=======
-  { path: "login", component: LoginComponent },
->>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
-  { path: "register", component: RegisterComponent },
-  { path: "**", component: NotFoundComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

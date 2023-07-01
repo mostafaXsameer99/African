@@ -1,0 +1,72 @@
+<section class="container w-75 mx-auto my-5">
+  <h2 *ngIf="!data" class="mt-3">Add New Product</h2>
+  <h2 *ngIf="data" class="mt-3">Update Product</h2>
+  <form class="row g-3" [formGroup]="productForm">
+    <div class="col-12">
+      <label for="inpImg" class="form-label"><img width="100" src="{{imgUrl}}" alt="" style="cursor: pointer;"></label>
+      <input #img hidden (change)="imgUpload($event)" type="file" class="form-control" id="inpImg" accept="image/*">
+    <div class="mx-1" [hidden]="image?.valid || image?.untouched">
+      <small *ngIf="image?.errors?.['required']" style="color: #c41f28;"> Image Is
+        Required</small>
+    </div>
+    </div>
+    <div class="col-md-6">
+      <label for="productName" class="form-label">Product Name</label>
+      <input type="text" formControlName="name" class="form-control" id="productName">
+      <div class="mx-1" [hidden]="name?.valid || name?.untouched">
+        <small *ngIf="name?.errors?.['required']" style="color: #c41f28;"> Product Name Is
+          Required</small>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="productPrice" class="form-label">Product Price</label>
+      <input type="number" formControlName="price" class="form-control" id="productPrice">
+      <div class="mx-1" [hidden]="price?.valid || price?.untouched">
+        <small *ngIf="price?.errors?.['required']" style="color: #c41f28;"> Price Is
+          Required</small>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="prodCat" class="form-label">Category</label>
+      <select formControlName="category" class="form-select" id="prodCat" aria-label="Default select example">
+        <option *ngFor="let cat of categories" value="{{cat._id}}">{{cat.name}}</option>
+      </select>
+      <div class="mx-1" [hidden]="category?.valid || category?.untouched">
+        <small *ngIf="category?.errors?.['required']" style="color: #c41f28;"> Category Is
+          Required</small>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="productQuantity" class="form-label">Product Quantity</label>
+      <input type="number" formControlName="quantity" class="form-control" id="productQuantity">
+    </div>
+
+
+    <div class="col-md-6">
+      <label for="prodColor" class="form-label">Color</label>
+      <select formControlName="color" class="form-select" id="prodColor" aria-label="Default select example">
+        <option *ngFor="let color of colors" value="{{color}}">{{color}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="prodSize" class="form-label">Size</label>
+      <select formControlName="size" class="form-select" id="prodSize" (change)="changeValue($event)" aria-label="Default select example">
+        <option *ngFor="let size of size" value="{{size}}">{{size}}</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label for="prodDesc" class="form-label">Description</label>
+      <textarea formControlName="description" class="form-control" name="" id="prodDesc" cols="30" rows=""></textarea>
+    </div>
+
+
+    <div class="col-12">
+      <button *ngIf="!data" [disabled]="productForm.invalid" type="submit" class="btn btn-primary" (click)="addProduct()">Add</button>
+      <button *ngIf="data" [disabled]="productForm.invalid" type="submit" class="btn btn-primary" (click)="updateProduct()">Update</button>
+      <button class="btn btn-danger mx-4" (click)="close()">close</button>
+    </div>
+  </form>
+
+</section>

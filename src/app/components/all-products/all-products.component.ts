@@ -14,22 +14,23 @@ export class AllProductsComponent implements OnInit, OnChanges, DoCheck {
   products: any = [];
   errMessage: any;
   cart: any[] = [];
+  isAdded:boolean=false
 
   constructor(
     private service: AllProductService,
     private shoppingSer:ShoppingCartService,
-    private toastr:ToastrService
+    private toastr:ToastrService,
     ) {
   }
   ngDoCheck(): void {
     this.products = this.service.productsArray;
   }
   ngOnChanges(changes: SimpleChanges): void {
-     this.products = this.service.productsArray;
+    //  this.products = this.service.productsArray;
   }
 
   ngOnInit(): void {
-    this.getAllProducts()
+    // this.getAllProducts()
 
   }
 
@@ -47,23 +48,41 @@ export class AllProductsComponent implements OnInit, OnChanges, DoCheck {
   }
 
   addToCart(event: any) {
-    // if ("cart" in localStorage) {
-    //   this.cart = JSON.parse(localStorage.getItem("cart")!)
-    //   let exist = this.cart.find(item => item.id == event.id)
-    //   if (exist) {
-    //     console.log("Product is already in your cart")
-    //   } else {
-    //     this.cart.push(event)
-    //     localStorage.setItem("cart", JSON.stringify(this.cart))
-    //   }
-    // } else {
-    //   this.cart.push(event)
-    //   localStorage.setItem("cart", JSON.stringify(this.cart))
-    // }
-    event.Quantity=1
-    this.shoppingSer.shoppingCart.push(event)
+    let OrderObj = {
+      product:event,
+      quantity:1
+    }
+    // this.shoppingSer.shoppingCart.push(OrderObj)
+    console.log(this.shoppingSer.shoppingCart)
+    let inCart = false
+    if(this.shoppingSer.shoppingCart.length>=1){
+      this.shoppingSer.shoppingCart.forEach((item:any)=>{
+        if(item.product._id == event._id){
+          inCart=true
+          return
+        }
+      })
 
+      if(inCart){
+        this.shoppingSer.shoppingCart.forEach((item: any) => {
+          if (item.product._id == event._id) {
+            item.quantity++
+            return;
+          }
+        });
+      }else {
+        this.shoppingSer.shoppingCart.push(OrderObj);
+      }
+    }else{
+      this.shoppingSer.shoppingCart.push(OrderObj)
+    }
+    // console.log(this.shoppingSer.shoppingCart)
+    this.toastr.success("Product Added Successfully")
   }
+
+
+
+
 
 
 

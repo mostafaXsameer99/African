@@ -1,0 +1,15 @@
+.table_section {
+
+  .remove_btn,
+  .edit_btn {
+    padding-inline: 0;
+    font-size: larger;
+    margin-top: 5px;
+    transition: all .5s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+}

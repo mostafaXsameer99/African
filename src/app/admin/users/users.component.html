@@ -1,0 +1,45 @@
+<section class="table_section container">
+  <h2 class="mt-3">Users</h2>
+  <table class="table border-top mt-3">
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td class="detailscol">
+          <h5 class="fs-5">{{user.userName}}</h5>
+        </td>
+        <td class="detailscol">
+          <h5 class="fs-5">{{user.email}}</h5>
+        </td>
+        <td class="detailscol">
+          <h5 class="fs-5">{{user.role}}</h5>
+        </td>
+        <td class="detailscol">
+          <h5 class="fs-5">{{user.phone}}</h5>
+        </td>
+        <td class="detailscol">
+          <h5 class="fs-5">{{user.address}}</h5>
+        </td>
+        <td><i (click)="updateUser(user)" class="fas fa-edit edit_btn text-primary" data-bs-toggle="modal"
+            data-bs-target="#editcourse1"></i></td>
+        <td><i (click)="deleteUser(user._id,user.email)" class="fa fa-trash remove_btn text-danger"></i></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+  <!-- not fount users -->
+  <div class="d-flex align-items-center justify-content-center vh-100" *ngIf="!users.length">
+    <div class="text-center">
+      <h1 class="display-1 fw-bold">404</h1>
+      <p class="fs-3"> <span class="text-danger">Opps!</span> Users not found.</p>
+      <p class="lead">
+        The Users you’re looking for doesn’t exist.
+      </p>
+      <a [routerLink]="['/Products']" class="btn btn-primary">Go Home</a>
+    </div>
+  </div>
+</section>
+<br>
+

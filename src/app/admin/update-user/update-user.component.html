@@ -1,0 +1,31 @@
+<section class="my-5">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="userUpdateForm">
+          <!-- role input -->
+
+          <div class="col-md-6">
+            <label for="prodCat" class="form-label">role</label>
+            <select formControlName="role" class="form-select" id="prodCat" aria-label="Default select example">
+              <option value="admin">admin</option>
+              <option value="user">user</option>
+            </select>
+            <div class="mx-1" [hidden]="role?.valid || role?.untouched">
+              <small *ngIf="role?.errors?.['required']" style="color: #c41f28;"> Category Is
+                Required</small>
+            </div>
+          </div>
+
+          <div class="col-12 my-4">
+            <button class="btn btn-success mx-4" (click)="update()">update</button>
+            <button class="btn btn-danger mx-4" (click)="close()">close</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</section>

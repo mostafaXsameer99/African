@@ -19,10 +19,12 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(catchError((error:HttpErrorResponse)=>{
-      this.toastr.error(error.error.message)
+      this.toastr.error(error.error.message || "Server Error")
       if(error.error.message == "jwt expired"){
         this.router.navigate(['/login'])
         localStorage.removeItem("Token")
+        localStorage.removeItem('role');
+        localStorage.removeItem('email');
       }
       throw error
     }))

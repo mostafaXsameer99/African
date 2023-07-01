@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService{
   public isAuthenticate:boolean=false
 
   constructor(private http:HttpClient) { }

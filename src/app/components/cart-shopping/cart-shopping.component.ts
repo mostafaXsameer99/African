@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
+import { Toast, ToastrService } from 'ngx-toastr';
+import { OrderService } from 'src/app/services/order.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
@@ -15,10 +17,13 @@ export class CartShoppingComponent {
   cart: any[] = [];
   total: number = 0
   totalSale: number = 0
+  notAllowed:boolean=true
 
   constructor(
     private shoppingSer:ShoppingCartService,
-    private http:HttpClient
+    private http:HttpClient,
+    private orderSer:OrderService,
+    private toastr: ToastrService,
     ){}
 
   ngOnInit(): void {
@@ -33,36 +38,52 @@ export class CartShoppingComponent {
     this.selectedSize = size;
   }
   removeItem(id: any) {
-    const index = this.cart.findIndex(item => item.id === id);
-    if (index !== -1) {
-      this.cart.splice(index, 1);
-      this.calculateTotal();
-      this.calculateTotalSale();
-      localStorage.setItem('cart', JSON.stringify(this.cart));
-    }
+    console.log(id)
+    console.log(this.cart)
+    this.cart.map((item:any, index:any)=>{
+      if (item._id == id){
+        return this.cart.splice(index, 1);
+          this.calculateTotal();
+          this.calculateTotalSale();
+      }else {
+        return this.cart;
+      }
+    })
+    // const index = this.cart.findIndex(item => item.id === id);
+    // if (index !== -1) {
+    //   this.cart.splice(index, 1);
+    //   this.calculateTotal();
+    //   this.calculateTotalSale();
+    //   localStorage.setItem('cart', JSON.stringify(this.cart));
+    // }
   }
   plusOne(id: number) {
-    const item = this.cart.find(item => item.id === id);
+    const item = this.cart.find(item => item._id === id);
+    // console.log(item)
     if (item) {
-      item.orderCount++;
+      item.Quantity++;
       this.calculateTotal();
       this.calculateTotalSale();
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+      // localStorage.setItem('cart', JSON.stringify(this.cart));
     }
   }
 
   minusOne(id: number) {
-    const item = this.cart.find(item => item.id === id);
-    if (item && item.orderCount > 1) {
-      item.orderCount--;
+    const item = this.cart.find(item => item._id === id);
+    if (item && item.Quantity > 1) {
+      item.Quantity--;
       this.calculateTotal();
       this.calculateTotalSale();
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+      // localStorage.setItem('cart', JSON.stringify(this.cart));
     }
+    console.log(item);
   }
 
+
+
+
+
   completeOrder() {
-    console.log("send data to database");
     this.http.post('http://localhost:3000/checkout',{
       cart:this.cart
     }).subscribe(async(res:any)=>{
@@ -73,22 +94,48 @@ export class CartShoppingComponent {
     })
   }
 
-  getCart() {
-    // if ("cart" in localStorage) {
-    //   this.cart = JSON.parse(localStorage.getItem("cart")!)
-    // }
-    // this.shoppingSer.getAllOrders().subscribe((res:any)=>{
-    //   this.cart=res.doc
+  safeOrder(){
+    // console.log(this.cart)
+    // console.log(this.shoppingSer.shoppingCart);
+    let productId = this.cart.map((item:any)=>{
+      return {product:item._id,quantity:item.Quantity}
+    })
+    let model = {
+      product: productId,
+    };
+    // console.log(model2);
+
+
+    // let productId = this.shoppingSer.shoppingCart.map((item:any)=>{
+    //   return {product:item.product._id,quantity:item.quantity}
     // })
-    console.log(this.shoppingSer.shoppingCart)
-    this.cart=this.shoppingSer.shoppingCart
+    // let model = {
+    //   product:productId
+    // }
+    // console.log(model)
+    this.orderSer.saveOrder(model).subscribe((res:any)=>{
+      this.notAllowed=false
+      this.toastr.success("order saved successfully")
+      console.log(res)
+    })
+
+
+  }
+
+  getCart() {
+    // console.log(this.shoppingSer.shoppingCart)
+    this.cart=this.shoppingSer.shoppingCart.map((item:any)=>{
+      item.product.Quantity=item.quantity
+      return item.product
+    })
+    console.log(this.cart)
   }
 
   calculateTotal(): void {
     let total = 0;
 
     for (const item of this.cart) {
-      total += item.orderCount * item.price;
+      total += item.Quantity * item.price;
     }
 
     if (total > 600) {
@@ -103,7 +150,7 @@ export class CartShoppingComponent {
     let total = 0;
 
     for (const item of this.cart) {
-      total += item.orderCount * item.salePrice;
+      total += item.Quantity * item.price;
     }
 
     if (total > 600) {

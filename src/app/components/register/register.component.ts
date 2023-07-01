@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr/toastr/toastr.service';
+import { ToastrService } from 'ngx-toastr';
 import { RegisterService } from 'src/app/services/register.service';
 
 
@@ -10,12 +10,16 @@ import { RegisterService } from 'src/app/services/register.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   userRegisterForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private ser: RegisterService,
-    private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private ser: RegisterService,
+    private router: Router,
+    private toastr: ToastrService,
+    ) {
 
   }
 
@@ -36,10 +40,11 @@ export class RegisterComponent {
   ngOnInit() { this.createForm() }
 
   register() {
+    console.log(this.userRegisterForm.value)
     this.ser.register(this.userRegisterForm.value).subscribe((res: any) => {
       localStorage.setItem('Token', res.token)
-      // this.toastr.success("success", "register success")
-      this.router.navigate(['/'])
+      this.toastr.success("success", "register success")
+      this.router.navigate(['/login'])
     })
 
   }

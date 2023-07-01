@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FileUploadModule } from 'ng2-file-upload';
+import {MatDialogModule} from '@angular/material/dialog'
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,11 +29,20 @@ import { ProductComponent } from './components/product/product.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { CoreModule } from './core/core.module';
-<<<<<<< HEAD
 import { authGuard } from './gaurds/auth.guard';
-=======
->>>>>>> 21546e0b09756d0190adf50cebb6df4bc5926aa4
 import { RegisterComponent } from './components/register/register.component';
+import { SidebarComponent } from './admin/sidebar/sidebar.component';
+import { AddProductComponent } from './admin/add-product/add-product.component';
+import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+import { AddNewProductComponent } from './admin/add-new-product/add-new-product.component';
+import { OrdersComponent } from './admin/orders/orders.component';
+
+import { ConfirmationComponent } from './admin/confirmation/confirmation.component';
+import { NewCategoryComponent } from './admin/new-category/new-category.component';
+import { UsersComponent } from './admin/users/users.component';
+import { OrderDetailsComponent } from './admin/order-details/order-details.component';
+import { UpdateUserComponent } from './admin/update-user/update-user.component';
+import { adminGuardGuard } from './gaurds/admin-guard.guard';
 
 
 
@@ -52,7 +64,17 @@ import { RegisterComponent } from './components/register/register.component';
     FooterComponent,
     ProductComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    AddProductComponent,
+    AdminCategoryComponent,
+    AddNewProductComponent,
+    OrdersComponent,
+    ConfirmationComponent,
+    NewCategoryComponent,
+    UsersComponent,
+    OrderDetailsComponent,
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,12 +82,20 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     BrowserAnimationsModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
-    CoreModule
+    CoreModule,
+    FileUploadModule,
+    MatDialogModule,
+    NgxPaginationModule,
   ],
-  providers: [authGuard],
-  bootstrap: [AppComponent]
+  exports: [NgxPaginationModule],
+  providers: [authGuard, adminGuardGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

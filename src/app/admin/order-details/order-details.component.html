@@ -1,0 +1,50 @@
+<section class="h-100 gradient-custom my-5">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-body p-4">
+            <div class="card shadow-0 border mb-4">
+              <div class="card-body">
+                <div class="row" *ngFor="let product of data.product">
+                  <div class="col-md-3">
+                    <img width="30px" src='http://localhost:3000/{{product.product.image}}'
+                      class="img-fluid" alt="Phone">
+                  </div>
+                  <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0">{{product.product.name}}</p>
+                  </div>
+                  <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">{{product.product.price}}$</p>
+                  </div>
+                  <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">{{product.quantity}} items</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between pt-2">
+              <p class="fw-bold mb-0">Order Details</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> ${{totalPrice}}</p>
+            </div>
+
+            <!-- <div class="d-flex justify-content-between pt-2">
+              <p class="text-muted mb-0">Invoice Number : 788152</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $19.00</p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-danger mx-4" (click)="close()">close</button>
+  </div>
+</section>
