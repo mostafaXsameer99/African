@@ -8,26 +8,26 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 @Component({
   selector: 'app-cart-shopping',
   templateUrl: './cart-shopping.component.html',
-  styleUrls: ['./cart-shopping.component.scss']
+  styleUrls: ['./cart-shopping.component.scss'],
 })
 export class CartShoppingComponent {
   selectedSize: string = '';
   Quantity: number = 1;
-  count: number = 1
+  count: number = 1;
   cart: any[] = [];
-  subTotal: number = 0
+  subTotal: number = 0;
   total: number = 0;
-  notAllowed: boolean = true
+  notAllowed: boolean = true;
 
   constructor(
     private shoppingSer: ShoppingCartService,
     private http: HttpClient,
     private orderSer: OrderService,
-    private toastr: ToastrService,
-  ) { }
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.getCart()
+    this.getCart();
     this.calculateTotal();
   }
 
@@ -37,34 +37,32 @@ export class CartShoppingComponent {
       total += item.Quantity * item.price;
     }
 
-
     this.subTotal = total;
     if (this.subTotal < 601) {
       this.total = total + 60;
     } else {
-      this.total = this.subTotal
+      this.total = this.subTotal;
     }
   }
 
-  selectSize(size: string) {
+  selectSize(size: string, item: any) {
     this.selectedSize = size;
+    item.size = size;
+    // console.log(item)
   }
 
   removeItem(id: any) {
     this.cart.map((item: any, index: any) => {
       if (item._id == id) {
-        this.calculateTotal();
         return this.cart.splice(index, 1);
-
-
       } else {
         return this.cart;
       }
-    })
-
+    });
+    this.calculateTotal();
   }
   plusOne(id: number) {
-    const item = this.cart.find(item => item._id === id);
+    const item = this.cart.find((item) => item._id === id);
     // console.log(item)
     if (item) {
       item.Quantity++;
@@ -73,47 +71,61 @@ export class CartShoppingComponent {
   }
 
   minusOne(id: number) {
-    const item = this.cart.find(item => item._id === id);
+    const item = this.cart.find((item) => item._id === id);
     if (item && item.Quantity > 1) {
       item.Quantity--;
       this.calculateTotal();
     }
   }
 
-
-
-
-
   completeOrder() {
-    this.http.post('http://localhost:3000/checkout', {
-      cart: this.cart
-    }).subscribe(async (res: any) => {
-      let stripe = await loadStripe('pk_test_51MQCBUEwQJXCe3Mmc3FzTRZYqCMdD0Zuv4DOLtIGqNgPleXebjlaiU7YTIqWPkIk1AW3smZQAqZQDalZIwWqyqXC00fjMq75eL')
-      stripe?.redirectToCheckout({
-        sessionId: res.id
+    this.saveOrder();
+    this.http
+      .post('http://localhost:3000/checkout', {
+        cart: this.cart,
       })
-    })
+      .subscribe(async (res: any) => {
+        let stripe = await loadStripe(
+          'pk_test_51MQCBUEwQJXCe3Mmc3FzTRZYqCMdD0Zuv4DOLtIGqNgPleXebjlaiU7YTIqWPkIk1AW3smZQAqZQDalZIwWqyqXC00fjMq75eL'
+        );
+        stripe?.redirectToCheckout({
+          sessionId: res.id,
+        });
+      });
   }
 
-  safeOrder() {
+  saveOrder() {
+    // console.log(this.cart)
+    // console.log(this.shoppingSer.shoppingCart);
     let productId = this.cart.map((item: any) => {
-      return { product: item._id, quantity: item.Quantity }
-    })
+      item.size = this.selectedSize;
+      console.log(item._id);
+      return { product: item._id, quantity: item.Quantity };
+    });
     let model = {
       product: productId,
     };
+    // console.log(model);
+
+    // let productId = this.shoppingSer.shoppingCart.map((item:any)=>{
+    //   return {product:item.product._id,quantity:item.quantity}
+    // })
+    // let model = {
+    //   product:productId
+    // }
+    // console.log(model)
     this.orderSer.saveOrder(model).subscribe((res: any) => {
-      this.notAllowed = false
-      this.toastr.success("order saved successfully")
-      // console.log(res)
-    })
+      this.notAllowed = false;
+      this.toastr.success('order saved successfully');
+      console.log(res);
+    });
   }
 
   getCart() {
-
     this.cart = this.shoppingSer.shoppingCart.map((item: any) => {
-      item.product.Quantity = item.quantity
-      return item.product
-    })
+      item.product.Quantity = item.quantity;
+      return item.product;
+    });
   }
 }
+

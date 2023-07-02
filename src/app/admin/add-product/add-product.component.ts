@@ -29,7 +29,7 @@ export class AddProductComponent implements OnInit {
 
   getAllProducts() {
     this.ProductSer.getAllProducts().subscribe((res: any) => {
-      // console.log(res.products)
+      console.log(res.products)
       this.products = res.products;
     });
   }
@@ -39,6 +39,7 @@ export class AddProductComponent implements OnInit {
     this.ProductSer.deleteProduct(id).subscribe((res: any) => {
       this.toastr.success(res.message);
       // console.log(res)
+      this.getAllProducts();
     });
   }
   updateProduct(product: any) {

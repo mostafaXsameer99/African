@@ -45,7 +45,7 @@ export class AddNewProductComponent implements OnInit {
     this.productForm = this.fb.group({
       name: [this.data?.name || '', [Validators.required]],
       price: [this.data?.price || '', [Validators.required]],
-      myfile: [this.data?.image || '', [Validators.required]],
+      photos: [this.data?.photos || '', [Validators.required]],
       category: [this.data?.category.name || '', [Validators.required]],
       quantity: [this.data?.quantity || ''],
       size: [this.data?.size || ''],
@@ -114,7 +114,7 @@ export class AddNewProductComponent implements OnInit {
 
   getCategory() {
     this.headerSer.getCategory().subscribe((res: any) => {
-      // console.log(res.doc)
+      console.log(res.doc)
       this.categories = res.doc;
     });
   }

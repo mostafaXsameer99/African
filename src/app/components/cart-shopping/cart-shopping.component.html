@@ -28,16 +28,16 @@
               <div class="row my-3">
                 <div class="col-md-6">
                   <div class=" product-card__size__buttons" title="Please select size">
-                    <button type="button" title="Please choose size" value="S" [class.selected]="selectedSize === 'S'"
-                      (click)="selectSize('S')">S</button>
-                    <button type="button" title="Please choose size" value="M" [class.selected]="selectedSize === 'M'"
-                      (click)="selectSize('M')">M</button>
-                    <button type="button" title="Please choose size" value="L" [class.selected]="selectedSize === 'L'"
-                      (click)="selectSize('L')">L</button>
-                    <button type="button" title="Please choose size" value="XL" [class.selected]="selectedSize === 'XL'"
-                      (click)="selectSize('XL')">XL</button>
+                    <button type="button" title="Please choose size" value="S" [class.selected]="item.size === 'S'"
+                      (click)="selectSize('S',item)">S</button>
+                    <button type="button" title="Please choose size" value="M" [class.selected]="item.size=== 'M'"
+                      (click)="selectSize('M',item)">M</button>
+                    <button type="button" title="Please choose size" value="L" [class.selected]="item.size === 'L'"
+                      (click)="selectSize('L',item)">L</button>
+                    <button type="button" title="Please choose size" value="XL" [class.selected]="item.size === 'XL'"
+                      (click)="selectSize('XL',item)">XL</button>
                     <button type="button" title="Please choose size" value="XXL"
-                      [class.selected]="selectedSize === 'XXL'" (click)="selectSize('XXL')">XXL</button>
+                      [class.selected]="item.size === 'XXL'" (click)="selectSize('XXL',item)">XXL</button>
                   </div>
                 </div>
               </div>
@@ -131,8 +131,10 @@
             </div> -->
             <!-- Complete Order Button -->
             <div class="row mt-4 product-card__button">
-              <button (click)="safeOrder()" *ngIf="notAllowed">Save Order</button>
-              <button (click)="completeOrder()" *ngIf="!notAllowed">Complete Order</button>
+              <!-- <button (click)="saveOrder()" *ngIf="notAllowed">Save Order</button> -->
+              <!-- <button (click)="completeOrder()" *ngIf="!notAllowed">Complete Order</button> -->
+              <button (click)="completeOrder()">Complete Order</button>
+
             </div>
           </div>
         </div>
