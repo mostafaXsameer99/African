@@ -24,11 +24,12 @@ export class CartShoppingComponent {
     private http: HttpClient,
     private orderSer: OrderService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getCart();
     this.calculateTotal();
+    // this.cart = this.shoppingSer.shoppingCart
   }
 
   calculateTotal(): void {
@@ -51,16 +52,36 @@ export class CartShoppingComponent {
     // console.log(item)
   }
 
+
+
+  // removeItem(id: any) {
+  //   this.cart.map((item: any, index: any) => {
+  //     if (item._id == id) {
+  //       return this.cart.splice(index, 1);
+  //     } else {
+  //       return this.cart;
+  //     }
+  //   });
+  //   this.shoppingSer.shoppingCart = this.cart;
+  //   this.calculateTotal();
+  //   console.log(this.cart);
+  //   console.log(this.shoppingSer.shoppingCart);
+  // }
+
+
   removeItem(id: any) {
     this.cart.map((item: any, index: any) => {
       if (item._id == id) {
-        return this.cart.splice(index, 1);
+        this.cart = this.cart.splice(index, 1);
       } else {
-        return this.cart;
+        // this.cart = this.cart;
       }
+      this.shoppingSer.shoppingCart = this.cart;
     });
     this.calculateTotal();
   }
+
+
   plusOne(id: number) {
     const item = this.cart.find((item) => item._id === id);
     // console.log(item)
@@ -94,9 +115,8 @@ export class CartShoppingComponent {
       });
   }
 
+
   saveOrder() {
-    // console.log(this.cart)
-    // console.log(this.shoppingSer.shoppingCart);
     let productId = this.cart.map((item: any) => {
       item.size = this.selectedSize;
       console.log(item._id);
@@ -105,15 +125,7 @@ export class CartShoppingComponent {
     let model = {
       product: productId,
     };
-    // console.log(model);
 
-    // let productId = this.shoppingSer.shoppingCart.map((item:any)=>{
-    //   return {product:item.product._id,quantity:item.quantity}
-    // })
-    // let model = {
-    //   product:productId
-    // }
-    // console.log(model)
     this.orderSer.saveOrder(model).subscribe((res: any) => {
       this.notAllowed = false;
       this.toastr.success('order saved successfully');
@@ -127,5 +139,6 @@ export class CartShoppingComponent {
       return item.product;
     });
   }
+
 }
 

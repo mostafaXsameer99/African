@@ -62,7 +62,6 @@ export class AllProductsComponent implements OnInit, OnChanges, DoCheck {
           return
         }
       })
-
       if(inCart){
         this.shoppingSer.shoppingCart.forEach((item: any) => {
           if (item.product._id == event._id) {

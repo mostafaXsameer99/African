@@ -12,10 +12,10 @@ export class ProductComponent implements OnInit {
   @Input() data: any = {}
   @Output() item = new EventEmitter()
   constructor(
-    private toastr:ToastrService,
-    private router:Router,
-    private prodDetailsSer:ProductDetailsService
-  ){}
+    private toastr: ToastrService,
+    private router: Router,
+    private prodDetailsSer: ProductDetailsService
+  ) { }
   ngOnInit(): void {
 
   }
@@ -25,10 +25,9 @@ export class ProductComponent implements OnInit {
   }
 
 
-  productDetails(data:any){
-    this.prodDetailsSer.productDetails =data
-    // console.log(this.productDetails.productDetails)
-    // console.log(this.prodDetailsSer.productDetails)
+  productDetails(data: any) {
+    this.prodDetailsSer.productDetails = data
     this.router.navigate(["/productDetails"])
   }
+  
 }

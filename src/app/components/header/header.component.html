@@ -40,8 +40,9 @@
       </ul>
 
       <form class="d-flex mx-auto" role="search">
-        <input #search class="form-control me-2 no-outline" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn " type="submit" (click)="searchProducts(search.value)"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+        <input #search class=" me-2 no-outline" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn" type="submit" (click)="searchProducts(search.value)"><i
+            class="fa-solid fa-magnifying-glass fa-lg"></i></button>
       </form>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-2">
@@ -51,9 +52,13 @@
           <a *ngIf="isAuthenticate" class="nav-link " (click)="logout()" routerLink="/login"><i
               class="fa-sharp fa-regular fa-user me-1"></i> Logout</a>
         </li>
-        <li class="nav-item me-2">
-          <a class="nav-link" routerLink="/shoppingCart"><i class="fa-regular fa-heart me-1"></i> Favorites</a>
+        <li class="nav-item me-2" *ngIf="isAdmin=='admin'">
+          <a class="nav-link" routerLink="/admin">
+            <i class="fa-solid fa-lock me-1"></i> Admin</a>
         </li>
+        <!-- <li class="nav-item me-2">
+          <a class="nav-link" routerLink="/shoppingCart"><i class="fa-regular fa-heart me-1"></i> Favorites</a>
+        </li> -->
         <li class="nav-item me-2">
           <a class="nav-link " routerLink="/shoppingCart"><i class="fa-solid fa-cart-plus me-1"></i> Shopping Cart</a>
         </li>
