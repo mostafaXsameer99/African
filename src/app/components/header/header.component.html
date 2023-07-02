@@ -32,22 +32,16 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " *ngFor="let cat of categories">
-        <li class="nav-item me-1">
+      <ul class="navbar-nav  mb-2 mb-lg-0 " *ngFor="let cat of categories">
+        <li class="nav-item ">
           <a class="nav-link " routerLink="/Products" routerLinkActive="active"
             (click)="getProductsByCategory(cat._id)">{{cat.name}}</a>
         </li>
-        <!-- <li class="nav-item me-1">
-          <a class="nav-link" routerLink="/Products">WOMEN</a>
-        </li>
-        <li class="nav-item me-1">
-          <a class="nav-link" routerLink="/Products">KIDS</a>
-        </li> -->
       </ul>
 
-      <form class="d-flex me-5" role="search">
-        <input #search class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit" (click)="searchProducts(search.value)">Search</button>
+      <form class="d-flex mx-auto" role="search">
+        <input #search class="form-control me-2 no-outline" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn " type="submit" (click)="searchProducts(search.value)"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
       </form>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-2">

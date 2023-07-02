@@ -1,41 +1,39 @@
 <app-header></app-header>
-<div id="carouselExampleIndicators" class="carousel slide mt-3" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+<div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide mt-3" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../../assets/img/banner1.webp" style="object-fit: fill;" class="d-block w-100"
+                    alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="../../../assets/img/banner2.webp" class="d-block w-100" style="object-fit: fill;"
+                    alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="../../../assets/img/banner3.webp" class="d-block w-100" style="object-fit: fill;"
+                    alt="...">
+            </div>
+        </div>
+
+
     </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="../../../assets/img/banner.webp" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="../../../assets/img/banner.webp" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="../../../assets/img/banner.webp" class="d-block w-100" alt="...">
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+   
 </div>
 <!-- <hr claas="mb-4"> -->
 
-<div class="container-fluid mt-3 p-0">
+<div class="filler-fluid mt-3 p-0">
     <div class="row mx-0">
         <div class="col-sm-12 col-md-4 p-0 " (click)="getProductsByCategory('64a0437e5f0d6a651d0400b8')">
-            <a >
+            <a>
                 <div class="card" style="border: none;">
                     <img class="zoomIn" src="../../../assets/img/woman_cat.webp">
                     <div class="centered-button">
@@ -45,7 +43,7 @@
             </a>
         </div>
         <div class="col-sm-12 col-md-4 p-0" (click)="getProductsByCategory('64a0436d5f0d6a651d0400b4')">
-            <a >
+            <a>
                 <div class="card" style="border: none;">
                     <img class="zoomIn" src="../../../assets/img/man_cat.webp">
                     <div class="centered-button">
@@ -55,7 +53,7 @@
             </a>
         </div>
         <div class="col-sm-12 col-md-4 p-0" (click)="getProductsByCategory('64a043835f0d6a651d0400bc')">
-            <a >
+            <a>
                 <div class="card" style="border: none;">
                     <img class="zoomIn" src="../../../assets/img/kids_cat.webp">
                     <div class="centered-button">
