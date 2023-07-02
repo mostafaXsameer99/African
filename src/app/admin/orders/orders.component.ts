@@ -22,7 +22,8 @@ export class OrdersComponent implements OnInit {
 
   getAllOrders() {
     this.orderSer.getAllOrders().subscribe((res: any) => {
-      console.log(res.message[0].product[0]);
+      // console.log(res.message[0].product[0]);
+      console.log(res.message)
       this.orders = res.message;
     });
   }

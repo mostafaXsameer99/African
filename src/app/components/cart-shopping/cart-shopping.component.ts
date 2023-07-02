@@ -34,8 +34,10 @@ export class CartShoppingComponent {
 
 
 
-  selectSize(size: string) {
+  selectSize(size: string,item:any) {
     this.selectedSize = size;
+    item.size=size
+    console.log(item)
   }
   removeItem(id: any) {
     console.log(id)
@@ -83,7 +85,8 @@ export class CartShoppingComponent {
 
 
 
-  completeOrder() {
+  completeOrder () {
+    this.saveOrder()
     this.http.post('http://localhost:3000/checkout',{
       cart:this.cart
     }).subscribe(async(res:any)=>{
@@ -94,16 +97,19 @@ export class CartShoppingComponent {
     })
   }
 
-  safeOrder(){
+  saveOrder(){
     // console.log(this.cart)
     // console.log(this.shoppingSer.shoppingCart);
     let productId = this.cart.map((item:any)=>{
+      item.size = this.selectedSize;
+      console.log(item._id)
       return {product:item._id,quantity:item.Quantity}
     })
     let model = {
       product: productId,
+
     };
-    // console.log(model2);
+    // console.log(model);
 
 
     // let productId = this.shoppingSer.shoppingCart.map((item:any)=>{

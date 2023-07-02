@@ -3,7 +3,7 @@
   <table class="table border-top mt-3">
     <tbody>
       <tr *ngFor="let product of products">
-        <td><img width="50" src='http://localhost:3000/{{product.image}}' alt="img"></td>
+        <td><img width="50" src='http://localhost:3000/{{product.image[0].filename}}' alt="img"></td>
         <td class="detailscol align-middle">
           <h5 class="fs-5">{{product.name}}</h5>
         </td>

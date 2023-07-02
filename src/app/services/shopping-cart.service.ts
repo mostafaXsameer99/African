@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  public shoppingCart:any=[]
+  public shoppingCart:any[]=[]
 
   constructor(private http:HttpClient) {
    }
