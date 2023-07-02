@@ -37,14 +37,14 @@ export class ProductDetailsComponent {
     console.log('Selected size:', this.selectedSize);
   }
 
-  openOverlay(event: Event, overlayId: string): void {
-    event.preventDefault();
-    this.overlayVisible = overlayId;
-  }
+  // openOverlay(event: Event, overlayId: string): void {
+  //   event.preventDefault();
+  //   this.overlayVisible = overlayId;
+  // }
 
-  closeOverlay(): void {
-    this.overlayVisible = '';
-  }
+  // closeOverlay(): void {
+  //   this.overlayVisible = '';
+  // }
 
   getProduct() {
     this.service.getProduct(this.productId).subscribe({
@@ -59,7 +59,7 @@ export class ProductDetailsComponent {
       quantity: 1,
     };
     // this.shoppingSer.shoppingCart.push(OrderObj)
-    console.log(this.shoppingSer.shoppingCart);
+    // console.log(this.shoppingSer.shoppingCart);
     let inCart = false;
     if (this.shoppingSer.shoppingCart.length >= 1) {
       this.shoppingSer.shoppingCart.forEach((item: any) => {

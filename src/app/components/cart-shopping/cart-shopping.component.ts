@@ -11,25 +11,26 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
   styleUrls: ['./cart-shopping.component.scss']
 })
 export class CartShoppingComponent {
-  selectedSize: string = 'M';
+  selectedSize: string = '';
   Quantity: number = 1;
   count: number = 1
   cart: any[] = [];
   total: number = 0
   totalSale: number = 0
-  notAllowed:boolean=true
+  notAllowed: boolean = true
 
   constructor(
-    private shoppingSer:ShoppingCartService,
-    private http:HttpClient,
-    private orderSer:OrderService,
+    private shoppingSer: ShoppingCartService,
+    private http: HttpClient,
+    private orderSer: OrderService,
     private toastr: ToastrService,
-    ){}
+  ) { }
 
   ngOnInit(): void {
     this.getCart()
     this.calculateTotal();
     this.calculateTotalSale();
+    // console.log("cart" + this.cart)
   }
 
 
@@ -37,15 +38,16 @@ export class CartShoppingComponent {
   selectSize(size: string) {
     this.selectedSize = size;
   }
+
   removeItem(id: any) {
-    console.log(id)
-    console.log(this.cart)
-    this.cart.map((item:any, index:any)=>{
-      if (item._id == id){
+    // console.log(id)
+    // console.log(this.cart)
+    this.cart.map((item: any, index: any) => {
+      if (item._id == id) {
         return this.cart.splice(index, 1);
-          this.calculateTotal();
-          this.calculateTotalSale();
-      }else {
+        this.calculateTotal();
+        this.calculateTotalSale();
+      } else {
         return this.cart;
       }
     })
@@ -84,21 +86,21 @@ export class CartShoppingComponent {
 
 
   completeOrder() {
-    this.http.post('http://localhost:3000/checkout',{
-      cart:this.cart
-    }).subscribe(async(res:any)=>{
+    this.http.post('http://localhost:3000/checkout', {
+      cart: this.cart
+    }).subscribe(async (res: any) => {
       let stripe = await loadStripe('pk_test_51MQCBUEwQJXCe3Mmc3FzTRZYqCMdD0Zuv4DOLtIGqNgPleXebjlaiU7YTIqWPkIk1AW3smZQAqZQDalZIwWqyqXC00fjMq75eL')
       stripe?.redirectToCheckout({
-        sessionId:res.id
+        sessionId: res.id
       })
     })
   }
 
-  safeOrder(){
+  safeOrder() {
     // console.log(this.cart)
     // console.log(this.shoppingSer.shoppingCart);
-    let productId = this.cart.map((item:any)=>{
-      return {product:item._id,quantity:item.Quantity}
+    let productId = this.cart.map((item: any) => {
+      return { product: item._id, quantity: item.Quantity }
     })
     let model = {
       product: productId,
@@ -113,8 +115,8 @@ export class CartShoppingComponent {
     //   product:productId
     // }
     // console.log(model)
-    this.orderSer.saveOrder(model).subscribe((res:any)=>{
-      this.notAllowed=false
+    this.orderSer.saveOrder(model).subscribe((res: any) => {
+      this.notAllowed = false
       this.toastr.success("order saved successfully")
       console.log(res)
     })
@@ -124,8 +126,8 @@ export class CartShoppingComponent {
 
   getCart() {
     // console.log(this.shoppingSer.shoppingCart)
-    this.cart=this.shoppingSer.shoppingCart.map((item:any)=>{
-      item.product.Quantity=item.quantity
+    this.cart = this.shoppingSer.shoppingCart.map((item: any) => {
+      item.product.Quantity = item.quantity
       return item.product
     })
     console.log(this.cart)

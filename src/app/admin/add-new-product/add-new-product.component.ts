@@ -2,10 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HeaderService } from 'src/app/services/header.service';
 import { NewProductService } from 'src/app/services/new-product.service';
-import {  FileUploader } from 'ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class AddNewProductComponent implements OnInit {
   imgUrl: any = '../../../assets/img/add1.png';
   categories: any[] = [];
   colors = ['Red', 'White', 'Black', 'Yellow'];
-  size = ['XXS', 'XS', 'S', 'M', 'L'];
+  size = ['S', 'M', 'L', 'XL', 'XXL'];
   productForm!: FormGroup;
   selectedFile = '';
   formValues: any;
@@ -31,8 +31,8 @@ export class AddNewProductComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     public dialog: MatDialogRef<ConfirmationComponent>,
-    public matDialog:MatDialog
-  ) {}
+    public matDialog: MatDialog
+  ) { }
 
 
   ngOnInit(): void {
@@ -142,7 +142,7 @@ export class AddNewProductComponent implements OnInit {
           hasChanged = true;
         }
       })
-    ;
+      ;
     if (hasChanged) {
       const dialogRef = this.matDialog.open(ConfirmationComponent, {
         width: '60%',
@@ -152,7 +152,7 @@ export class AddNewProductComponent implements OnInit {
       dialogRef.afterClosed().subscribe((result) => {
 
       });
-    }else {
+    } else {
       this.dialog.close();
     }
   }
