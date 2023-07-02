@@ -32,6 +32,7 @@ export class AllProductService {
     return this.http.get(environment.baseApi+"products/byCategory/"+id)
   }
 
+  
 
   getProductBySearch(searchValue:any){
     return this.http.get(environment.baseApi+`search?search=${searchValue}`)

@@ -34,7 +34,8 @@
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 " *ngFor="let cat of categories">
         <li class="nav-item me-1">
-          <a class="nav-link " routerLink="/Products" routerLinkActive="active" (click)="getProductsByCategory(cat._id)">{{cat.name}}</a>
+          <a class="nav-link " routerLink="/Products" routerLinkActive="active"
+            (click)="getProductsByCategory(cat._id)">{{cat.name}}</a>
         </li>
         <!-- <li class="nav-item me-1">
           <a class="nav-link" routerLink="/Products">WOMEN</a>
@@ -51,8 +52,10 @@
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-2">
         <li class="nav-item me-2">
-          <a *ngIf="!isAuthenticate" class="nav-link " routerLink="/login"><i class="fa-sharp fa-regular fa-user me-1" ></i> Login</a>
-          <a *ngIf="isAuthenticate" class="nav-link " (click)="logout()" routerLink="/login"><i class="fa-sharp fa-regular fa-user me-1" ></i> LogOut</a>
+          <a *ngIf="!isAuthenticate" class="nav-link " routerLink="/login"><i
+              class="fa-sharp fa-regular fa-user me-1"></i> Login</a>
+          <a *ngIf="isAuthenticate" class="nav-link " (click)="logout()" routerLink="/login"><i
+              class="fa-sharp fa-regular fa-user me-1"></i> Logout</a>
         </li>
         <li class="nav-item me-2">
           <a class="nav-link" routerLink="/shoppingCart"><i class="fa-regular fa-heart me-1"></i> Favorites</a>
