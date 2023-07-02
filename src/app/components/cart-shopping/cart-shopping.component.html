@@ -8,7 +8,7 @@
 
 
     <div class="col-md-8 col-lg-8 ">
-      <div class="row free-shopping py-3 " *ngIf="totalSale>600 ">
+      <div class="row free-shopping py-3 " *ngIf="subTotal>600 ">
         <span>You got the <span style="font-weight: 600;">free shipping</span> opportunity!</span>
       </div>
 
@@ -78,7 +78,7 @@
             <span style="font-weight: 400;">Total Amount</span>
           </div>
           <div class="col">
-            <span style="font-weight: 600; font-size: x-large;">{{totalSale}} EGP</span>
+            <span style="font-weight: 600; font-size: x-large;" > {{total}} EGP</span>
           </div>
           <hr class="mt-3">
         </div>
@@ -90,45 +90,45 @@
                 <span style="font-weight: 200;">Sub Total</span>
               </div>
               <div class="col-md-4 d-flex justify-content-end">
-                <span style="font-weight: 400;">{{total}} EGP</span>
+                <span style="font-weight: 400;">{{subTotal}} EGP</span>
               </div>
             </div>
             <!-- Cargo -->
             <div class="row mt-2">
               <div class="col-md-8 d-flex justify-content-start">
-                <span style="font-weight: 200;">Cargo</span>
+                <span style="font-weight: 200;">Delivery</span>
               </div>
               <div class="col-md-4 d-flex justify-content-end">
-                <span style="font-weight: 400;">40 EGP</span>
+                <span style="font-weight: 400;">60 EGP</span>
               </div>
             </div>
             <!-- discounts -->
-            <div class="row mt-2" style="color: lightgreen;">
+            <!-- <div class="row mt-2" style="color: lightgreen;">
               <div class="col-md-8 d-flex justify-content-start">
                 <span style="font-weight: 200;">Sale</span>
               </div>
               <div class="col-md-4 d-flex justify-content-end">
                 <span style="font-weight: 400;">-{{total-totalSale}} EGP</span>
               </div>
-            </div>
+            </div> -->
             <!-- conditional free Delivery -->
-            <div class="row mt-2" style="color: lightgreen;" *ngIf="totalSale >600">
+            <div class="row mt-2" style="color: lightgreen;" *ngIf="subTotal>600">
               <div class="col-md-8 d-flex justify-content-start">
                 <span style="font-weight: 200;">Free Delivery</span>
               </div>
               <div class="col-md-4 d-flex justify-content-end">
-                <span style="font-weight: 400;">-40 EGP</span>
+                <span style="font-weight: 400;">-60 EGP</span>
               </div>
             </div>
             <!-- Total -->
-            <div class="row mt-2">
+            <!-- <div class="row mt-2">
               <div class="col-md-8 d-flex justify-content-start">
                 <span style="font-weight: 200;">Total</span>
               </div>
               <div class="col-md-4 d-flex justify-content-end">
                 <span style="font-weight: 400;">{{totalSale}} EGP</span>
               </div>
-            </div>
+            </div> -->
             <!-- Complete Order Button -->
             <div class="row mt-4 product-card__button">
               <button (click)="safeOrder()" *ngIf="notAllowed">Save Order</button>

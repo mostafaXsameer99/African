@@ -15,8 +15,8 @@ export class CartShoppingComponent {
   Quantity: number = 1;
   count: number = 1
   cart: any[] = [];
-  total: number = 0
-  totalSale: number = 0
+  subTotal: number = 0
+  total: number = 0;
   notAllowed: boolean = true
 
   constructor(
@@ -29,35 +29,39 @@ export class CartShoppingComponent {
   ngOnInit(): void {
     this.getCart()
     this.calculateTotal();
-    this.calculateTotalSale();
-    // console.log("cart" + this.cart)
   }
 
+  calculateTotal(): void {
+    let total = 0;
+    for (const item of this.cart) {
+      total += item.Quantity * item.price;
+    }
 
+
+    this.subTotal = total;
+    if (this.subTotal < 601) {
+      this.total = total + 60;
+    } else {
+      this.total = this.subTotal
+    }
+  }
 
   selectSize(size: string) {
     this.selectedSize = size;
   }
 
   removeItem(id: any) {
-    // console.log(id)
-    // console.log(this.cart)
     this.cart.map((item: any, index: any) => {
       if (item._id == id) {
-        return this.cart.splice(index, 1);
         this.calculateTotal();
-        this.calculateTotalSale();
+        return this.cart.splice(index, 1);
+
+
       } else {
         return this.cart;
       }
     })
-    // const index = this.cart.findIndex(item => item.id === id);
-    // if (index !== -1) {
-    //   this.cart.splice(index, 1);
-    //   this.calculateTotal();
-    //   this.calculateTotalSale();
-    //   localStorage.setItem('cart', JSON.stringify(this.cart));
-    // }
+
   }
   plusOne(id: number) {
     const item = this.cart.find(item => item._id === id);
@@ -65,8 +69,6 @@ export class CartShoppingComponent {
     if (item) {
       item.Quantity++;
       this.calculateTotal();
-      this.calculateTotalSale();
-      // localStorage.setItem('cart', JSON.stringify(this.cart));
     }
   }
 
@@ -75,10 +77,7 @@ export class CartShoppingComponent {
     if (item && item.Quantity > 1) {
       item.Quantity--;
       this.calculateTotal();
-      this.calculateTotalSale();
-      // localStorage.setItem('cart', JSON.stringify(this.cart));
     }
-    console.log(item);
   }
 
 
@@ -97,69 +96,24 @@ export class CartShoppingComponent {
   }
 
   safeOrder() {
-    // console.log(this.cart)
-    // console.log(this.shoppingSer.shoppingCart);
     let productId = this.cart.map((item: any) => {
       return { product: item._id, quantity: item.Quantity }
     })
     let model = {
       product: productId,
     };
-    // console.log(model2);
-
-
-    // let productId = this.shoppingSer.shoppingCart.map((item:any)=>{
-    //   return {product:item.product._id,quantity:item.quantity}
-    // })
-    // let model = {
-    //   product:productId
-    // }
-    // console.log(model)
     this.orderSer.saveOrder(model).subscribe((res: any) => {
       this.notAllowed = false
       this.toastr.success("order saved successfully")
-      console.log(res)
+      // console.log(res)
     })
-
-
   }
 
   getCart() {
-    // console.log(this.shoppingSer.shoppingCart)
+
     this.cart = this.shoppingSer.shoppingCart.map((item: any) => {
       item.product.Quantity = item.quantity
       return item.product
     })
-    console.log(this.cart)
   }
-
-  calculateTotal(): void {
-    let total = 0;
-
-    for (const item of this.cart) {
-      total += item.Quantity * item.price;
-    }
-
-    if (total > 600) {
-      this.total = total;
-    } else {
-      this.total = total + 60;
-    }
-
-  }
-
-  calculateTotalSale(): void {
-    let total = 0;
-
-    for (const item of this.cart) {
-      total += item.Quantity * item.price;
-    }
-
-    if (total > 600) {
-      this.totalSale = total;
-    } else {
-      this.totalSale = total + 60;
-    }
-  }
-
 }
