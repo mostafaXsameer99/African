@@ -2,7 +2,7 @@
 <div class="container mt-5">
 
     <!-- Product Information Overlay -->
-    <div id="productDetailsOverlay" class="overlay "
+    <!-- <div id="productDetailsOverlay" class="overlay "
         [ngStyle]="{'display': overlayVisible === 'productDetails' ? 'block' : 'none'}">
         <div id="overlay-content">
             <div style="display: flex;  justify-content: space-between;">
@@ -17,9 +17,9 @@
                 <li> Product group: : MAN T-Shirt</li>
             </ul>
         </div>
-    </div>
+    </div> -->
     <!-- Delivery Information Overlay -->
-    <div id="deliveryInformationOverlay" class="overlay "
+    <!-- <div id="deliveryInformationOverlay" class="overlay "
         [ngStyle]="{'display': overlayVisible === 'deliveryInformation' ? 'block' : 'none'}">
         <div id="overlay-content">
             <div style="display: flex;  justify-content: space-between;">
@@ -36,12 +36,12 @@
             </ul>
         </div>
     </div>
+ -->
 
 
 
 
-
-    <div>
+    <!-- <div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -49,7 +49,7 @@
                 <li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
             </ol>
         </nav>
-    </div>
+    </div> -->
 
     <div class="product-card">
         <div class="container-fluid">
@@ -68,16 +68,16 @@
                 <div class="col-lg-3">
                     <div class="row">
                         <div class="col-md-10">
-                            <h6>{{product.name}}</h6>
-                            <h6>{{product.price}}</h6>
+                            <h3 class="product-card__size__title">{{product.name}}</h3>
+                            <h3>{{product.description}}</h3>
+                            <h3 class="product-card__size__title" style="color: #c41f28;">{{product.price}} EGP</h3>
                             <div class="product-card__discount">
-                                <span>40% Discount</span><span class="product-card__price">{{product.price}}</span>
                             </div>
-                            <div class="product-card__code">Product Code: {{product._id}}</div>
+
                         </div>
-                        <div class="col-md-2">
+                        <!-- <div class="col-md-2">
                             <i class="fa-regular fa-heart"></i><br>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row product-card__size">
                         <div class="product-card__size__title">Size Options</div>
@@ -96,10 +96,12 @@
                     </div>
                     <div class="row">
                         <div class="product-card__button">
-                            <button class="addToCart" [class.disabled-button]="selectedSize === ''" (click)="addToCard(product)">ADD TO CART</button>
+                            <button class="addToCart" [class.disabled-button]="selectedSize === ''"
+                                (click)="addToCard(product)">ADD TO CART</button>
                         </div>
                     </div>
-                    <div class="row product_info">
+                    <div class="product-card__code">Product Code: {{product._id}}</div>
+                    <!-- <div class="row product_info">
                         <ul>
                             <li><a href="#" (click)="openOverlay($event, 'productDetails')">
                                     <div style="display: flex; justify-content: space-between;"><span>Product
@@ -112,10 +114,11 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+<app-footer></app-footer>

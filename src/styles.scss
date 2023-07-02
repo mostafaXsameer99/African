@@ -19,6 +19,24 @@
     box-sizing: border-box;
 }
 
+.no-outline {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px #23252a solid;
+    // font-weight: bold;
+    font-size: large;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

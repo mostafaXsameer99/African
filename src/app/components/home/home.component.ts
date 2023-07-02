@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AllProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -7,14 +8,22 @@ import { AllProductService } from 'src/app/services/product.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private productSer:AllProductService){
+  constructor(private productSer: AllProductService, private router: Router) {
 
   }
 
-
-
-  manProduct(){
-
+  getProductsByCategory(id: any) {
+    // console.log(id)
+    this.productSer.getProductsByCategory(id).subscribe((res: any) => {
+      this.productSer.productsArray = res.doc
+      this.router.navigate(["/Products"])
+      // console.log(res.doc)
+    }, err => {
+      this.productSer.productsArray = []
+      // console.log("No Product")
+      this.productSer.foundProduct = false
+    })
   }
+
 
 }

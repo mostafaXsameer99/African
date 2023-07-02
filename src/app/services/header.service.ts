@@ -14,13 +14,4 @@ export class HeaderService {
     return this.http.get(environment.baseApi+"category")
   }
 
-
-
-
-
-
-
-
-
-
 }

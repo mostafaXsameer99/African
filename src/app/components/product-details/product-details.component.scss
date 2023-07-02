@@ -1,33 +1,17 @@
-* {
-    box-sizing: border-box;
-}
-
-
-
-
-
-.product-card__price {
-    font-weight: bolder;
-    margin: 0px 10px;
-}
-
-
-.product-card__discount {
-    color: #c41f28;
-}
+// .product-card__discount {
+//     color: #c41f28;
+// }
 
 .product-card__code {
-    margin-top: 30px;
+    margin: 2rem 0rem;
     color: gray;
     font-weight: 300;
 }
 
-.product-card__size {
-    margin-top: 20px;
-}
+
 
 .product-card__size__title {
-    margin-top: 50px;
+    // margin-top: 50px;
     font-weight: bold;
     color: #23252a;
 }
@@ -35,7 +19,6 @@
 
 .row {
     display: flex;
-    // border: 1px solid red;
 }
 
 .product-card__button {
@@ -43,7 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 1rem;
 }
 
 .product-card__button button {
@@ -109,51 +92,51 @@ a {
 
 
 
-.container {
-    position: relative;
-}
+// .container {
+//     position: relative;
+// }
 
-#overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    animation: showOverlay 0.5s forwards;
-}
+// #overlay {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.5);
+//     display: none;
+//     opacity: 0;
+//     transition: opacity 0.5s ease;
+//     animation: showOverlay 0.5s forwards;
+// }
 
-#overlay.show {
-    display: block;
-}
+// #overlay.show {
+//     display: block;
+// }
 
-#overlay-content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 500px;
-    /* adjust the width as needed */
-    background-color: #fff;
-    padding: 30px;
-    // text-align: center;
-    z-index: 999;
-}
+// #overlay-content {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     height: 100%;
+//     width: 500px;
+//     /* adjust the width as needed */
+//     background-color: #fff;
+//     padding: 30px;
+//     // text-align: center;
+//     z-index: 999;
+// }
 
-#overlay-content h2 {
-    text-align: center;
-    margin: 20px;
-}
+// #overlay-content h2 {
+//     text-align: center;
+//     margin: 20px;
+// }
 
-#overlay-content li {
-    margin: 20px 0px;
-}
+// #overlay-content li {
+//     margin: 20px 0px;
+// }
 
-#close-overlay {
-    margin-top: 20px;
-}
+// #close-overlay {
+//     margin-top: 20px;
+// }

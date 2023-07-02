@@ -1,34 +1,31 @@
+<app-header></app-header>
 <section class="vh-100">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="../../../assets/img/undraw_login_re_4vu2.svg" class="img-fluid"
-          alt="Sample image">
+        <img src="../../../assets/img/undraw_login_re_4vu2.svg" class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form [formGroup]="loginForm">
 
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <!-- <input type="email" id="form3Example3" formControlName="email" class="form-control form-control-lg no-outline"
-              placeholder="E-mail " /> -->
-              <div class="mx-1" [hidden]="email?.valid || email?.untouched">
-                <small *ngIf="email?.errors?.['required']" style="color: #c41f28;"> Email Is
-                  Required</small>
-                <small *ngIf="email?.errors?.['pattern']" style="color: #c41f28;"> Invalid email format
-                </small>
-              </div>
 
+            <div class="mx-1" [hidden]="email?.valid || email?.untouched">
+              <small *ngIf="email?.errors?.['required']" style="color: #c41f28;"> Email Is
+                Required</small>
+              <small *ngIf="email?.errors?.['pattern']" style="color: #c41f28;"> Invalid email format
+              </small>
+            </div>
 
-            <!-- <label class="form-label" for="form3Example3">Email address</label> -->
           </div>
 
 
 
 
           <div class="form-outline mb-4">
-            <input type="email" id="form3Example3" formControlName="email" class="form-control form-control-lg no-outline"
-              placeholder="E-mail " />
+            <input type="email" id="form3Example3" formControlName="email"
+              class="form-control form-control-lg no-outline" placeholder="E-mail " />
             <div class="mx-1" [hidden]="email?.valid || email?.untouched">
               <small *ngIf="email?.errors?.['required']" style="color: #c41f28;"> Email Is
                 Required</small>
@@ -68,3 +65,4 @@
   </div>
 
 </section>
+<app-footer></app-footer>
