@@ -9,7 +9,7 @@
         <form [formGroup]="loginForm">
 
           <!-- Email input -->
-          <div class="form-outline mb-4">
+          <!-- <div class="form-outline mb-4">
 
             <div class="mx-1" [hidden]="email?.valid || email?.untouched">
               <small *ngIf="email?.errors?.['required']" style="color: #c41f28;"> Email Is
@@ -18,14 +18,14 @@
               </small>
             </div>
 
-          </div>
+          </div> -->
 
 
 
 
           <div class="form-outline mb-4">
-            <input type="email" id="form3Example3" formControlName="email"
-              class="form-control form-control-lg no-outline" placeholder="E-mail " />
+            <input type="email" formControlName="email" class="form-control form-control-lg no-outline"
+              placeholder="E-mail " />
             <div class="mx-1" [hidden]="email?.valid || email?.untouched">
               <small *ngIf="email?.errors?.['required']" style="color: #c41f28;"> Email Is
                 Required</small>
@@ -36,7 +36,7 @@
 
 
           <!-- Password input -->
-          <div class="form-outline mb-3">
+          <div class="form-outline mb-4">
             <input type="password" id="form3Example4" formControlName="password"
               class="form-control form-control-lg no-outline" placeholder="Password" />
             <div class="mx-1" [hidden]="password?.valid || password?.untouched">
