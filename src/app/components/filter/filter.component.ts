@@ -14,13 +14,26 @@ export class FilterComponent {
   selectedColor: any;
   selectedSize: any;
   selectedPrice: any;
+  minPrice :any;
+  maxPrice   :any;
   modelCollapsed = false;
   colorCollapsed = true;
   sizeCollapsed = true;
   PriceRangeCollapsed = true;
 
   constructor(private productSer: AllProductService) {}
+  
+  onMinInputChange(event: any) {
+    this.minPrice = event.target.value;
+    this.selectedPrice = this.minPrice;
+  }
 
+  onMaxInputChange(event: any) {
+    this.maxPrice = event.target.value;
+    this.selectedPrice = this.maxPrice;
+  }
+
+ 
   togglemodelCollapsed() {
     this.modelCollapsed = !this.modelCollapsed;
   }
@@ -40,11 +53,13 @@ export class FilterComponent {
   }
 
   getProductsByFilter() {
+    console.log( this.maxPrice, this.minPrice)
     this.productSer
       .getProductsByFilter(
         this.selectedColor,
         this.selectedSize,
-        this.selectedPrice,
+        this.maxPrice,
+        this.minPrice,
         this.selectedModel
       )
       .subscribe(

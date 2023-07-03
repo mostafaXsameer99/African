@@ -39,8 +39,8 @@ export class AllProductService {
   }
 
 
-  getProductsByFilter(color:any, size:any, price:any, model:any){
-    return this.http.get(environment.baseApi+`search/filter?color=${color}&&size=${size}&&price=${price}&&model=${model}`)
+  getProductsByFilter(color:any, size:any, maxprice:any,minprice:any,  model:any){
+    return this.http.get(environment.baseApi+`search/filter?color=${color}&&size=${size}&&maxprice=${maxprice}&&minprice=${minprice}&&model=${model}`)
   }
 
 
