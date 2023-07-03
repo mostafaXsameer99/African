@@ -64,9 +64,13 @@ export class AllProductsComponent implements OnInit, OnChanges, DoCheck {
       })
       if(inCart){
         this.shoppingSer.shoppingCart.forEach((item: any) => {
-          if (item.product._id == event._id) {
+          if (item.product._id == event._id && item.quantity < item.product.quantity) {
             item.quantity++
+            console.log(item.quantity)
+            console.log(item.product.quantity);
             return;
+          }else {
+            this.toastr.error('Quantity Is Not Available');
           }
         });
       }else {

@@ -102,17 +102,21 @@ export class CartShoppingComponent {
   plusOne(id: number) {
     const item = this.cart.find((item) => item._id === id);
     console.log(item.quantity)
-    if (item) {
+    if (item && item.Quantity<item.quantity) {
+      console.log(item.Quantity)
+      console.log(item.quantity);
       item.Quantity++;
       this.calculateTotal();
-    }
-    this.shoppingSer.shoppingCart.map((item: any) => {
-      if(item.product._id == id){
+      this.shoppingSer.shoppingCart.map((item: any) => {
+        if(item.product._id == id){
 
-        console.log(item)
-        item.quantity++
-      }
-    })
+          console.log(item)
+          item.quantity++
+        }
+      })
+    }else{
+      this.toastr.error('Quantity Is Not Available');
+    }
   }
 
   minusOne(id: number) {
@@ -120,12 +124,12 @@ export class CartShoppingComponent {
     if (item && item.Quantity > 1) {
       item.Quantity--;
       this.calculateTotal();
+      this.shoppingSer.shoppingCart.map((item: any) => {
+        if(item.product._id == id){
+          item.quantity--;
+        }
+      });
     }
-    this.shoppingSer.shoppingCart.map((item: any) => {
-      if(item.product._id == id){
-        item.quantity--;
-      }
-    });
   }
 
   completeOrder() {
