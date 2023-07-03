@@ -59,6 +59,7 @@ export class AddProductComponent implements OnInit {
   addNewProduct(){
     const dialogRef = this.dialog.open(AddNewProductComponent, {
       width: '80%',
+      height: '100%',
       disableClose: true,
     });
 

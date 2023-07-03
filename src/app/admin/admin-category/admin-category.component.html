@@ -16,7 +16,7 @@
 
 
   <!-- not fount categories -->
-  <div class="d-flex align-items-center justify-content-center vh-100" *ngIf="!categories.length">
+  <div class="d-flex align-items-center justify-content-center" *ngIf="!categories.length">
     <div class="text-center">
       <h1 class="display-1 fw-bold">404</h1>
       <p class="fs-3"> <span class="text-danger">Opps!</span> Categories not found.</p>
@@ -26,6 +26,5 @@
       <a [routerLink]="['/Products']" class="btn btn-primary">Go Home</a>
     </div>
   </div>
+  <button (click)="addNewCategory()" class="btn btn-success">Add New Category</button>
 </section>
-<br>
-<button (click)="addNewCategory()" class="btn btn-success">Add Now Category</button>
