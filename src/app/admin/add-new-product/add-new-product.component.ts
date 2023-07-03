@@ -28,14 +28,12 @@ export class AddNewProductComponent implements OnInit {
   imgUrl: any = '../../../assets/img/add1.png';
   imgsUrl: any[] = []
   categories: any[] = [];
-  colors = ['Red', 'White', 'Black', 'Yellow', 'Blue'];
+  colors = ['Red', 'White', 'Black', 'Yellow', 'Blue', 'Purple'];
   size = ['S', 'M', 'L', 'XL', 'XXL'];
   productForm!: FormGroup;
   selectedFile = '';
   formValues: any;
-
   selectedFiles: File[] = []
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private headerSer: HeaderService,

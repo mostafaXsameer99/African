@@ -98,8 +98,7 @@
                     </div>
                     <div class="row">
                         <div class="product-card__button">
-                            <button class="addToCart" [class.disabled-button]="selectedSize === ''"
-                                (click)="addToCard(product)">ADD TO CART</button>
+                            <button class="addToCart" (click)="addToCard(product)">ADD TO CART</button>
                         </div>
                     </div>
                     <div class="product-card__code">Product Code: {{product._id}}</div>
