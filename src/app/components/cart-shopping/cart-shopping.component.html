@@ -17,7 +17,8 @@
         <div class="container">
           <div class="row pt-3 px-3" *ngFor="let item of cart last as lItem">
             <div class="col-md-2 ">
-              <img src='http://localhost:3000/{{item.image}}' style="width: 100%; height: auto;" alt="" srcset="">
+              <!-- <img src='http://localhost:3000/{{item.image}}' style="width: 100%; height: auto;" alt="" srcset=""> -->
+              <img src='http://localhost:3000/{{item.image[0].filename}}' style="width: 100%; height: auto;" alt="" srcset="">
             </div>
             <div class="col-md-6 mb-4 ">
               <div class="row my-1"><span>{{item.name}}</span></div>

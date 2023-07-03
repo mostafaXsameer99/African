@@ -1,11 +1,22 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { HeaderService } from 'src/app/services/header.service';
 import { NewProductService } from 'src/app/services/new-product.service';
 import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
@@ -15,13 +26,15 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
 })
 export class AddNewProductComponent implements OnInit {
   imgUrl: any = '../../../assets/img/add1.png';
+  imgsUrl: any[] = []
   categories: any[] = [];
-  colors = ['Red', 'White', 'Black', 'Yellow', 'blue'];
+  colors = ['Red', 'White', 'Black', 'Yellow'];
   size = ['S', 'M', 'L', 'XL', 'XXL'];
   productForm!: FormGroup;
   selectedFile = '';
   formValues: any;
 
+  selectedFiles: File[] = []
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -33,7 +46,6 @@ export class AddNewProductComponent implements OnInit {
     public dialog: MatDialogRef<ConfirmationComponent>,
     public matDialog: MatDialog
   ) { }
-
 
   ngOnInit(): void {
     console.log(this.data);
@@ -55,6 +67,7 @@ export class AddNewProductComponent implements OnInit {
 
     this.formValues = this.productForm.value;
   }
+
 
   get name() {
     return this.productForm.get('name');
@@ -92,7 +105,14 @@ export class AddNewProductComponent implements OnInit {
   prepereFormData() {
     let formData = new FormData();
     Object.entries(this.productForm.value).forEach(([key, value]: any) => {
-      formData.append(key, value);
+
+      if (key == "myfile") {
+        for (let i = 0; i < this.selectedFiles.length; i++) {
+          formData.append('myfile', this.selectedFiles[i])
+        }
+      } else {
+        formData.append(key, value);
+      }
     });
     return formData;
   }
@@ -114,16 +134,23 @@ export class AddNewProductComponent implements OnInit {
 
   getCategory() {
     this.headerSer.getCategory().subscribe((res: any) => {
-      console.log(res.doc)
+      console.log(res.doc);
       this.categories = res.doc;
     });
   }
 
   imgUpload(e: any) {
-    // console.log(e.target.files[0].name)
     this.selectedFile = e.target.files[0];
-    // console.log(this.selectedFile)
-    this.productForm.get('myfile')?.setValue(e.target.files[0]);
+    console.log(e.target.files)
+    this.selectedFiles = e.target.files;
+
+    // this.productForm.get('myfile')?.setValue(e.target.files[0]);
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+
+      this.productForm.get('myfile')?.setValue(this.selectedFiles[i]);
+    }
+    // console.log(this.productForm.value);
+
     let reader = new FileReader();
     if (e.target.files && e.target.files.length > 0) {
       let file = e.target.files[0];
@@ -136,22 +163,18 @@ export class AddNewProductComponent implements OnInit {
 
   close() {
     let hasChanged = false;
-    Object.keys(
-      this.formValues).forEach((item: any) => {
-        if (this.formValues[item] !== this.productForm.value[item]) {
-          hasChanged = true;
-        }
-      })
-      ;
+    Object.keys(this.formValues).forEach((item: any) => {
+      if (this.formValues[item] !== this.productForm.value[item]) {
+        hasChanged = true;
+      }
+    });
     if (hasChanged) {
       const dialogRef = this.matDialog.open(ConfirmationComponent, {
         width: '60%',
         disableClose: true,
       });
 
-      dialogRef.afterClosed().subscribe((result) => {
-
-      });
+      dialogRef.afterClosed().subscribe((result) => { });
     } else {
       this.dialog.close();
     }

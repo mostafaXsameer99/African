@@ -4,11 +4,9 @@
   <form class="row g-3" [formGroup]="productForm">
     <div class="col-12">
       <label for="inpImg" class="form-label"><img width="100" src="{{imgUrl}}" alt="" style="cursor: pointer;"></label>
-      <input #img hidden (change)="imgUpload($event)" type="file" class="form-control" id="inpImg" accept="image/*">
-    <div class="mx-1" [hidden]="image?.valid || image?.untouched">
-      <small *ngIf="image?.errors?.['required']" style="color: #c41f28;"> Image Is
-        Required</small>
-    </div>
+      <input #img hidden (change)="imgUpload($event)" type="file" class="form-control" id="inpImg" accept="image/*"
+        multiple="multiple">
+      <img *ngFor="let img of imgsUrl" src="{{img}}" alt="">
     </div>
     <div class="col-md-6">
       <label for="productName" class="form-label">Product Name</label>
@@ -51,7 +49,8 @@
 
     <div class="col-md-6">
       <label for="prodSize" class="form-label">Size</label>
-      <select formControlName="size" class="form-select" id="prodSize" (change)="changeValue($event)" aria-label="Default select example">
+      <select formControlName="size" class="form-select" id="prodSize" (change)="changeValue($event)"
+        aria-label="Default select example">
         <option *ngFor="let size of size" value="{{size}}">{{size}}</option>
       </select>
     </div>
@@ -63,10 +62,11 @@
 
 
     <div class="col-12">
-      <button *ngIf="!data" [disabled]="productForm.invalid" type="submit" class="btn btn-primary" (click)="addProduct()">Add</button>
-      <button *ngIf="data" [disabled]="productForm.invalid" type="submit" class="btn btn-primary" (click)="updateProduct()">Update</button>
+      <button *ngIf="!data" [disabled]="productForm.invalid" type="submit" class="btn btn-primary"
+        (click)="addProduct()">Add</button>
+      <button *ngIf="data" [disabled]="productForm.invalid" type="submit" class="btn btn-primary"
+        (click)="updateProduct()">Update</button>
       <button class="btn btn-danger mx-4" (click)="close()">close</button>
     </div>
   </form>
-
 </section>

@@ -16,8 +16,10 @@
         <td class="align-middle">
           <h6 class="fs-5 table_price">{{product.price}}$</h6>
         </td>
-        <td class="align-middle"><i class="fas fa-edit edit_btn text-primary" (click)="updateProduct(product)"  data-bs-toggle="modal" data-bs-target="#editcourse1"></i></td>
-        <td class="align-middle"><i (click)="deleteProduct(product._id)"  class="fa fa-trash remove_btn text-danger"></i></td>
+        <td class="align-middle"><i class="fas fa-edit edit_btn text-primary" (click)="updateProduct(product)"
+            data-bs-toggle="modal" data-bs-target="#editcourse1"></i></td>
+        <td class="align-middle"><i (click)="deleteProduct(product._id)" class="fa fa-trash remove_btn text-danger"></i>
+        </td>
       </tr>
     </tbody>
   </table>

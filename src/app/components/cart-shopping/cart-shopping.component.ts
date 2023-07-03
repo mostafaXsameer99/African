@@ -99,7 +99,6 @@ export class CartShoppingComponent {
     });
     this.calculateTotal();
   }
-
   plusOne(id: number) {
     const item = this.cart.find((item) => item._id === id);
     // console.log(item)
@@ -107,6 +106,9 @@ export class CartShoppingComponent {
       item.Quantity++;
       this.calculateTotal();
     }
+    this.shoppingSer.shoppingCart.map((item: any) => {
+      item.quantity++
+    })
   }
 
   minusOne(id: number) {
@@ -115,6 +117,9 @@ export class CartShoppingComponent {
       item.Quantity--;
       this.calculateTotal();
     }
+    this.shoppingSer.shoppingCart.map((item: any) => {
+      item.quantity--;
+    });
   }
 
   completeOrder() {
