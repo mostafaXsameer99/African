@@ -69,18 +69,36 @@ export class CartShoppingComponent {
   // }
 
 
+  // removeItem(id: any) {
+  //   this.cart.map((item: any, index: any) => {
+  //     if (item._id == id) {
+  //       this.cart = this.cart.splice(index, 1);
+  //     } else {
+  //       // this.cart = this.cart;
+  //     }
+  //     this.shoppingSer.shoppingCart = this.cart;
+  //   });
+  //   this.calculateTotal();
+  // }
+
+
   removeItem(id: any) {
+    this.shoppingSer.shoppingCart.map((item: any, index: any) => {
+      if (item.product._id == id) {
+        return this.shoppingSer.shoppingCart.splice(index, 1);
+      } else {
+        return this.shoppingSer.shoppingCart;
+      }
+    })
     this.cart.map((item: any, index: any) => {
       if (item._id == id) {
-        this.cart = this.cart.splice(index, 1);
+        return this.cart.splice(index, 1);
       } else {
-        // this.cart = this.cart;
+        return this.cart;
       }
-      this.shoppingSer.shoppingCart = this.cart;
     });
     this.calculateTotal();
   }
-
 
   plusOne(id: number) {
     const item = this.cart.find((item) => item._id === id);
