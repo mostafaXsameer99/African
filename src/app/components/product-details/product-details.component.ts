@@ -72,7 +72,13 @@ export class ProductDetailsComponent {
       if (inCart) {
         this.shoppingSer.shoppingCart.forEach((item: any) => {
           if (item.product._id == product._id) {
-            item.quantity++;
+            if (item.quantity < item.product.quantity) {
+              item.quantity++;
+              console.log(item.quantity);
+              console.log(item.product.quantity);
+            } else {
+              this.toastr.error('Quantity Is Not Available');
+            }
             return;
           }
         });
