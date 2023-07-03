@@ -101,13 +101,17 @@ export class CartShoppingComponent {
   }
   plusOne(id: number) {
     const item = this.cart.find((item) => item._id === id);
-    // console.log(item)
+    console.log(item.quantity)
     if (item) {
       item.Quantity++;
       this.calculateTotal();
     }
     this.shoppingSer.shoppingCart.map((item: any) => {
-      item.quantity++
+      if(item.product._id == id){
+
+        console.log(item)
+        item.quantity++
+      }
     })
   }
 
@@ -118,7 +122,9 @@ export class CartShoppingComponent {
       this.calculateTotal();
     }
     this.shoppingSer.shoppingCart.map((item: any) => {
-      item.quantity--;
+      if(item.product._id == id){
+        item.quantity--;
+      }
     });
   }
 

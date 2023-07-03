@@ -1,55 +1,6 @@
 <app-header class="app-header"></app-header>
 <div class="container mt-5">
 
-    <!-- Product Information Overlay -->
-    <!-- <div id="productDetailsOverlay" class="overlay "
-        [ngStyle]="{'display': overlayVisible === 'productDetails' ? 'block' : 'none'}">
-        <div id="overlay-content">
-            <div style="display: flex;  justify-content: space-between;">
-                <h2>Product Details</h2>
-                <i class="fa-solid fa-xmark" id="close-overlay" (click)="closeOverlay()" style="color: #000000;"></i>
-            </div>
-            <h4>Product Information</h4>
-            <ul>
-                <li> Model Measurements: Height: 1.87 Waist: 74 </li>
-                <li>Sample size: M</li>
-                <li> Main Fabric Content: : Cotton 100%</li>
-                <li> Product group: : MAN T-Shirt</li>
-            </ul>
-        </div>
-    </div> -->
-    <!-- Delivery Information Overlay -->
-    <!-- <div id="deliveryInformationOverlay" class="overlay "
-        [ngStyle]="{'display': overlayVisible === 'deliveryInformation' ? 'block' : 'none'}">
-        <div id="overlay-content">
-            <div style="display: flex;  justify-content: space-between;">
-                <h2>Delivery Information</h2>
-                <i class="fa-solid fa-xmark" id="close-overlay" (click)="closeOverlay()" style="color: #000000;"></i>
-            </div>
-            <h4>Delivery Information</h4>
-            <ul>
-                <li>Delivery by Cargo</li>
-                <li>Your order from defacto.com/en-eg will be delivered to your address by cargo.</li>
-                <li>The shipping fee is fixed and 40 EGP.</li>
-                <li>You can pay cash on delivery.</li>
-                <li>Shipping over 599 EGP is free.</li>
-            </ul>
-        </div>
-    </div>
- -->
-
-
-
-
-    <!-- <div>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">T-shirts</li>
-                <li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
-            </ol>
-        </nav>
-    </div> -->
 
     <div class="product-card">
         <div class="container-fluid">
@@ -57,12 +8,10 @@
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-md-6">
-                            <img src='http://localhost:3000/{{product.image[0].filename}}'
-                                style="width: 100%; height: auto;">
+                            <img src='http://localhost:3000/{{product.image[0].filename}}' style="width: 100%; height: auto;">
                         </div>
                         <div class="col-md-6">
-                            <img src='http://localhost:3000/{{product.image[1].filename}}'
-                                style="width: 100%; height: auto;">
+                            <img src='http://localhost:3000/{{product.image[1].filename}}' style="width: 100%; height: auto;">
                         </div>
                     </div>
                 </div>
@@ -98,7 +47,8 @@
                     </div>
                     <div class="row">
                         <div class="product-card__button">
-                            <button class="addToCart" (click)="addToCard(product)">ADD TO CART</button>
+                            <button class="addToCart" [class.disabled-button]="selectedSize === ''"
+                                (click)="addToCard(product)">ADD TO CART</button>
                         </div>
                     </div>
                     <div class="product-card__code">Product Code: {{product._id}}</div>
