@@ -152,7 +152,12 @@ export class CartShoppingComponent {
   saveOrder() {
     let productId = this.cart.map((item: any) => {
       item.size = this.selectedSize;
-      console.log(item._id);
+      console.log(item.Quantity);
+      let newQuantity= {quantity: item.quantity- item.Quantity}
+      console.log(newQuantity)
+      this.orderSer.changeQuantity(newQuantity,item._id).subscribe((res:any)=>{
+        console.log(res)
+      })
       return { product: item._id, quantity: item.Quantity };
     });
     let model = {

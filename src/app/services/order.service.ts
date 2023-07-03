@@ -17,4 +17,8 @@ export class OrderService {
   saveOrder(model:any){
     return this.http.post(environment.baseApi+"order/addOrder",model)
   }
+
+  changeQuantity(model:any,id:any){
+    return this.http.patch(environment.baseApi + `products/changeQuantity/${id}`,model);
+  }
 }

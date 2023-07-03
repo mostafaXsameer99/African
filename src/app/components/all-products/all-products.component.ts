@@ -64,13 +64,15 @@ export class AllProductsComponent implements OnInit, OnChanges, DoCheck {
       })
       if(inCart){
         this.shoppingSer.shoppingCart.forEach((item: any) => {
-          if (item.product._id == event._id && item.quantity < item.product.quantity) {
-            item.quantity++
-            console.log(item.quantity)
-            console.log(item.product.quantity);
+          if (item.product._id == event._id) {
+            if (item.quantity < item.product.quantity) {
+              item.quantity++;
+              console.log(item.quantity);
+              console.log(item.product.quantity);
+            } else {
+              this.toastr.error('Quantity Is Not Available');
+            }
             return;
-          }else {
-            this.toastr.error('Quantity Is Not Available');
           }
         });
       }else {
@@ -79,7 +81,6 @@ export class AllProductsComponent implements OnInit, OnChanges, DoCheck {
     }else{
       this.shoppingSer.shoppingCart.push(OrderObj)
     }
-    // console.log(this.shoppingSer.shoppingCart)
     this.toastr.success("Product Added Successfully")
   }
 
