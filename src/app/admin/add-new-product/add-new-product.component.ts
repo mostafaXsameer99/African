@@ -28,12 +28,14 @@ export class AddNewProductComponent implements OnInit {
   imgUrl: any = '../../../assets/img/add1.png';
   imgsUrl: any[] = []
   categories: any[] = [];
-  colors = ['Red', 'White', 'Black', 'Yellow', 'Blue', 'Purple'];
+  colors = ['Red', 'White', 'Black', 'Yellow', 'Blue'];
   size = ['S', 'M', 'L', 'XL', 'XXL'];
   productForm!: FormGroup;
   selectedFile = '';
   formValues: any;
+
   selectedFiles: File[] = []
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private headerSer: HeaderService,
@@ -55,12 +57,12 @@ export class AddNewProductComponent implements OnInit {
     this.productForm = this.fb.group({
       name: [this.data?.name || '', [Validators.required]],
       price: [this.data?.price || '', [Validators.required]],
-      myfile: [this.data?.photos || '', [Validators.required]],
-      category: [this.data?.category.name || '', [Validators.required]],
+      myfile: [this.data?.image || '', [Validators.required]],
+      category: [this.data?.category._id || '', [Validators.required]],
       quantity: [this.data?.quantity || ''],
       size: [this.data?.size || ''],
       color: [this.data?.color || ''],
-      description: [this.data?.deleteProduct || ''],
+      description: [this.data?.description || ''],
     });
 
     this.formValues = this.productForm.value;
@@ -132,7 +134,7 @@ export class AddNewProductComponent implements OnInit {
 
   getCategory() {
     this.headerSer.getCategory().subscribe((res: any) => {
-      console.log(res.doc);
+      // console.log(res.doc);
       this.categories = res.doc;
     });
   }
