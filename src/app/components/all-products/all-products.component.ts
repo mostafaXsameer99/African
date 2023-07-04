@@ -1,4 +1,5 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AllProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
@@ -8,43 +9,54 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
   templateUrl: './all-products.component.html',
   styleUrls: ['./all-products.component.scss']
 })
-export class AllProductsComponent implements OnInit, OnChanges, DoCheck {
-
-
+export class AllProductsComponent implements OnInit, DoCheck {
   products: any = [];
   errMessage: any;
   cart: any[] = [];
   isAdded:boolean=false
+  catID:any
 
   constructor(
     private service: AllProductService,
     private shoppingSer:ShoppingCartService,
     private toastr:ToastrService,
+    private activatedRouter:ActivatedRoute
     ) {
   }
   ngDoCheck(): void {
     this.products = this.service.productsArray;
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    //  this.products = this.service.productsArray;
-  }
 
   ngOnInit(): void {
-    // this.getAllProducts()
-
+    this.catID = this.activatedRouter.snapshot.paramMap.get('cid');
+    console.log(this.catID)
+    if(!this.catID){
+      this.getAllProducts()
+    }else {
+      this.getProductsByCategory();
+    }
   }
 
 
   getAllProducts() {
     this.service.getAllProducts().subscribe({
       next: (data:any) => {
-        this.service.productsArray=data.products.doc
-        this.products = this.service.productsArray;
-        // this.products=data
+        this.service.productsArray=data.products
+        // this.products = this.service.productsArray;
+        this.products = data.products;
+        console.log(data.products)
     },
 
       error: err => this.errMessage = err
     });
+  }
+
+  getProductsByCategory(){
+    this.service.getProductsByCategory(this.catID).subscribe((res:any)=>{
+      console.log(res)
+      this.products = res.doc;
+      this.service.productsArray=res.doc
+    })
   }
 
   addToCart(event: any) {
@@ -83,11 +95,4 @@ export class AllProductsComponent implements OnInit, OnChanges, DoCheck {
     }
     this.toastr.success("Product Added Successfully")
   }
-
-
-
-
-
-
-
 }

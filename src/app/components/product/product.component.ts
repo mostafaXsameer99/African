@@ -6,28 +6,23 @@ import { ProductDetailsService } from 'src/app/services/product-details.service'
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  @Input() data: any = {}
-  @Output() item = new EventEmitter()
+  @Input() data: any = {};
+  @Output() item = new EventEmitter();
   constructor(
     private toastr: ToastrService,
     private router: Router,
     private prodDetailsSer: ProductDetailsService
-  ) { }
-  ngOnInit(): void {
-
-  }
+  ) {}
+  ngOnInit(): void {}
 
   add() {
-    this.item.emit(this.data)
+    this.item.emit(this.data);
   }
-
 
   productDetails(data: any) {
-    this.prodDetailsSer.productDetails = data
-    this.router.navigate(["/productDetails"])
+    this.router.navigate(['productDetails',data._id]);
   }
-  
 }

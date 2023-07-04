@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductDetailsService } from 'src/app/services/product-details.service';
-import { AllProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
@@ -18,18 +17,16 @@ export class ProductDetailsComponent {
   errMessage: any;
 
   constructor(
-    private route: ActivatedRoute,
-    private service: AllProductService,
+    private activatedRoute: ActivatedRoute,
     private productDetailsSer: ProductDetailsService,
     private shoppingSer: ShoppingCartService,
     private toastr: ToastrService
   ) {
-    this.productId = this.route.snapshot.paramMap.get('id');
-    console.log(this.productId);
+
   }
   ngOnInit(): void {
-    // this.getProduct()
-    this.product = this.productDetailsSer.productDetails;
+    this.productId = this.activatedRoute.snapshot.paramMap.get('pid');
+    this.getProductDetails();
   }
 
   selectSize(size: string) {
@@ -46,11 +43,11 @@ export class ProductDetailsComponent {
   //   this.overlayVisible = '';
   // }
 
-  getProduct() {
-    this.service.getProduct(this.productId).subscribe({
-      next: (data) => (this.product = data),
-      error: (err) => console.log(err),
-    });
+  getProductDetails() {
+    this.productDetailsSer.getProductDetails(this.productId).subscribe((res:any)=>{
+      // console.log(res)
+      this.product=res.product[0]
+    })
   }
 
   addToCard(product: any) {

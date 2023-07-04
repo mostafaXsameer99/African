@@ -33,9 +33,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+
+      <!-- ///// -->
       <ul class="navbar-nav  mb-2 mb-lg-0 " *ngFor="let cat of categories">
         <li class="nav-item ">
-          <a class="nav-link " routerLink="/Products" routerLinkActive="active"
+          <a class="nav-link " [routerLink]='["/Products",cat._id]' routerLinkActive="active"
             (click)="getProductsByCategory(cat._id)">{{cat.name}}</a>
         </li>
       </ul>
