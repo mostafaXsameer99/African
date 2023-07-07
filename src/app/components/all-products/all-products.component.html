@@ -4,12 +4,11 @@
     <div style="display:flex;">
       <app-filter style="padding: 10px 50px 0px 20px;background-color:#f9f9f9"></app-filter>
       <div class="grid-container" style="width: 100%; ">
-        <ng-container *ngIf="products.length>=1">
-          <div *ngFor="let item of products">
+        <ng-container *ngIf="products.length >= 1">
+          <div *ngFor="let item of products.slice((currentPage-1)*productsPerPage, currentPage*productsPerPage)">
             <app-product [data]="item" (item)="addToCart($event)" id="item"></app-product>
           </div>
         </ng-container>
-
 
         <div class="d-flex align-items-center justify-content-center vh-100" *ngIf="!products.length">
           <div class="text-center">
@@ -23,6 +22,12 @@
         </div>
 
       </div>
+    </div>
+  </div>
+  <div class="text-center mt-3">
+    <div class="btn-group" role="group" aria-label="Pagination">
+      <button class="africanButton" (click)="prev()" [disabled]="isPrevDisabled()">Previous</button>
+      <button class="africanButton" (click)="next()" [disabled]="isNextDisabled()">Next</button>
     </div>
   </div>
 </div>

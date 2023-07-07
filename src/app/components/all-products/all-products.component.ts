@@ -15,14 +15,17 @@ export class AllProductsComponent implements OnInit, DoCheck {
   cart: any[] = [];
   isAdded:boolean=false
   catID:any
+  currentPage = 1;
+  productsPerPage = 8;
 
   constructor(
     private service: AllProductService,
     private shoppingSer:ShoppingCartService,
     private toastr:ToastrService,
     private activatedRouter:ActivatedRoute
-    ) {
+  ) {
   }
+  
   ngDoCheck(): void {
     this.products = this.service.productsArray;
   }
@@ -37,7 +40,6 @@ export class AllProductsComponent implements OnInit, DoCheck {
     }
   }
 
-
   getAllProducts() {
     this.service.getAllProducts().subscribe({
       next: (data:any) => {
@@ -45,8 +47,7 @@ export class AllProductsComponent implements OnInit, DoCheck {
         // this.products = this.service.productsArray;
         this.products = data.products;
         console.log(data.products)
-    },
-
+      },
       error: err => this.errMessage = err
     });
   }
@@ -94,5 +95,21 @@ export class AllProductsComponent implements OnInit, DoCheck {
       this.shoppingSer.shoppingCart.push(OrderObj)
     }
     this.toastr.success("Product Added Successfully")
+  }
+
+  next() {
+    this.currentPage++;
+  }
+
+  prev() {
+    this.currentPage--;
+  }
+
+  isPrevDisabled() {
+    return this.currentPage === 1;
+  }
+
+  isNextDisabled() {
+    return this.currentPage === Math.ceil(this.products.length / this.productsPerPage);
   }
 }
