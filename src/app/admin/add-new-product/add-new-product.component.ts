@@ -28,7 +28,7 @@ export class AddNewProductComponent implements OnInit {
   imgUrl: any = '../../../assets/img/add1.png';
   imgsUrl: any[] = []
   categories: any[] = [];
-  colors = ['Red', 'White', 'Black', 'Yellow', 'Blue'];
+  colors = ['Red', 'White', 'Black', 'Yellow', 'Blue','Green','Purple'];
   size = ['S', 'M', 'L', 'XL', 'XXL'];
   productForm!: FormGroup;
   selectedFile = '';

@@ -8,10 +8,12 @@
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-md-6">
-                            <img src='http://localhost:3000/{{product.image[0].filename}}' style="width: 100%; height: auto;">
+                            <img src='http://localhost:3000/{{product.image[0].filename}}'
+                                style="width: 100%; height: auto;">
                         </div>
                         <div class="col-md-6">
-                            <img src='http://localhost:3000/{{product.image[1].filename}}' style="width: 100%; height: auto;">
+                            <img src='http://localhost:3000/{{product.image[1].filename}}'
+                                style="width: 100%; height: auto;">
                         </div>
                     </div>
                 </div>
@@ -21,7 +23,7 @@
                         <div class="col-md-10">
                             <h3 class="product-card__size__title">{{product.name}}</h3>
                             <h3>{{product.description}}</h3>
-                            <h3 class="product-card__size__title" style="color: #c41f28;">{{product.price}} EGP</h3>
+                            <h3 class="product-card__size__title">{{product.price}} EGP</h3>
                             <div class="product-card__discount">
                             </div>
 
@@ -47,8 +49,7 @@
                     </div>
                     <div class="row">
                         <div class="product-card__button">
-                            <button class="addToCart" [class.disabled-button]="selectedSize === ''"
-                                (click)="addToCard(product)">ADD TO CART</button>
+                            <button class="addToCart" (click)="addToCard(product)">ADD TO CART</button>
                         </div>
                     </div>
                     <div class="product-card__code">Product Code: {{product._id}}</div>
