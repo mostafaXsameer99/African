@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AllProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -14,15 +15,19 @@ export class FilterComponent {
   selectedColor: any;
   selectedSize: any;
   selectedPrice: any;
-  minPrice :any;
-  maxPrice   :any;
+  minPrice: any;
+  maxPrice: any;
   modelCollapsed = false;
   colorCollapsed = true;
   sizeCollapsed = true;
   PriceRangeCollapsed = true;
+  categoryId: any;
 
-  constructor(private productSer: AllProductService) {}
-  
+  constructor(
+    private productSer: AllProductService,
+    private activatedRouter: ActivatedRoute
+  ) {}
+
   onMinInputChange(event: any) {
     this.minPrice = event.target.value;
     this.selectedPrice = this.minPrice;
@@ -33,7 +38,6 @@ export class FilterComponent {
     this.selectedPrice = this.maxPrice;
   }
 
- 
   togglemodelCollapsed() {
     this.modelCollapsed = !this.modelCollapsed;
   }
@@ -53,7 +57,7 @@ export class FilterComponent {
   }
 
   getProductsByFilter() {
-    console.log( this.maxPrice, this.minPrice)
+    // this.categoryId
     this.productSer
       .getProductsByFilter(
         this.selectedColor,

@@ -9,6 +9,7 @@ import {
   MatDialogModule,
 } from '@angular/material/dialog';
 import { AddNewProductComponent } from '../add-new-product/add-new-product.component';
+import { UpdateProductComponent } from '../update-product/update-product.component';
 
 @Component({
   selector: 'app-add-product',
@@ -43,10 +44,10 @@ export class AddProductComponent implements OnInit {
     });
   }
   updateProduct(product: any) {
-    const dialogRef = this.dialog.open(AddNewProductComponent, {
+    const dialogRef = this.dialog.open(UpdateProductComponent, {
       width: '80%',
       data: product,
-      disableClose:true
+      disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

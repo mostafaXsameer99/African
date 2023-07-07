@@ -8,7 +8,6 @@ import {
 } from '@angular/forms';
 import { HeaderService } from 'src/app/services/header.service';
 import { NewProductService } from 'src/app/services/new-product.service';
-import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import {
@@ -37,7 +36,6 @@ export class AddNewProductComponent implements OnInit {
   selectedFiles: File[] = []
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private headerSer: HeaderService,
     private fb: FormBuilder,
     private newProdSer: NewProductService,
@@ -48,28 +46,29 @@ export class AddNewProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    console.log(this.selectedFiles);
     this.getCategory();
     this.createProductForm();
   }
 
   createProductForm() {
     this.productForm = this.fb.group({
-      name: [this.data?.name || '', [Validators.required]],
-      price: [this.data?.price || '', [Validators.required]],
-      myfile: [this.data?.image || '', [Validators.required]],
-      category: [this.data?.category._id || '', [Validators.required]],
-      quantity: [this.data?.quantity || ''],
-      size: [this.data?.size || ''],
-      color: [this.data?.color || ''],
-      description: [this.data?.description || ''],
+      name: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      myfile: [ '', [Validators.required]],
+      category: ['', [Validators.required]],
+      quantity: [''],
+      size: [''],
+      color: [''],
+      description: [''],
     });
 
     this.formValues = this.productForm.value;
+    console.log(this.formValues)
   }
 
 
-  get name() {
+  get pName() {
     return this.productForm.get('name');
   }
   get price() {
@@ -96,7 +95,7 @@ export class AddNewProductComponent implements OnInit {
     // formData.append('myfile',this.productForm.value['myfile'])
 
     this.newProdSer.addNewProduct(model).subscribe((res: any) => {
-      // console.log(res)
+      console.log(res)
       this.toastr.success(res.message);
       this.dialog.close(true);
     });
@@ -105,11 +104,11 @@ export class AddNewProductComponent implements OnInit {
   prepereFormData() {
     let formData = new FormData();
     Object.entries(this.productForm.value).forEach(([key, value]: any) => {
-
       if (key == "myfile") {
-        for (let i = 0; i < this.selectedFiles.length; i++) {
-          formData.append('myfile', this.selectedFiles[i])
-        }
+          for (let i = 0; i < this.selectedFiles.length; i++) {
+            formData.append('myfile', this.selectedFiles[i])
+          }
+
       } else {
         formData.append(key, value);
       }
@@ -117,20 +116,7 @@ export class AddNewProductComponent implements OnInit {
     return formData;
   }
 
-  updateProduct() {
-    let model = this.prepereFormData();
-    this.newProdSer
-      .updateProduct(this.data._id, model)
-      .subscribe((res: any) => {
-        // console.log(res)
-        this.toastr.success(res.message);
-        this.dialog.close(true);
-      });
-  }
 
-  changeValue(e: any) {
-    console.log(e.target.value);
-  }
 
   getCategory() {
     this.headerSer.getCategory().subscribe((res: any) => {
@@ -144,12 +130,10 @@ export class AddNewProductComponent implements OnInit {
     console.log(e.target.files)
     this.selectedFiles = e.target.files;
 
-    // this.productForm.get('myfile')?.setValue(e.target.files[0]);
     for (let i = 0; i < this.selectedFiles.length; i++) {
 
       this.productForm.get('myfile')?.setValue(this.selectedFiles[i]);
     }
-    // console.log(this.productForm.value);
 
     let reader = new FileReader();
     if (e.target.files && e.target.files.length > 0) {
