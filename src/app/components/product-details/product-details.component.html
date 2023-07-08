@@ -36,15 +36,15 @@
                         <div class="product-card__size__title">Size Options</div>
                         <div class="d-flex flex-wrap product-card__size__buttons" title="Please select size">
                             <button type="button" title="Please choose size" value="S"
-                                [class.selected]="selectedSize === 'S'" (click)="selectSize('S')">S</button>
+                                [class.selected]="product.size === 'S'" (click)="selectSize('S')">S</button>
                             <button type="button" title="Please choose size" value="M"
-                                [class.selected]="selectedSize === 'M'" (click)="selectSize('M')">M</button>
+                                [class.selected]="product.size === 'M'" (click)="selectSize('M')">M</button>
                             <button type="button" title="Please choose size" value="L"
-                                [class.selected]="selectedSize === 'L'" (click)="selectSize('L')">L</button>
+                                [class.selected]="product.size === 'L'" (click)="selectSize('L')">L</button>
                             <button type="button" title="Please choose size" value="XL"
-                                [class.selected]="selectedSize === 'XL'" (click)="selectSize('XL')">XL</button>
+                                [class.selected]="product.size === 'XL'" (click)="selectSize('XL')">XL</button>
                             <button type="button" title="Please choose size" value="XXL"
-                                [class.selected]="selectedSize === 'XXL'" (click)="selectSize('XXL')">XXL</button>
+                                [class.selected]="product.size== 'XXL'" (click)="selectSize('XXL')">XXL</button>
                         </div>
                     </div>
                     <div class="row">

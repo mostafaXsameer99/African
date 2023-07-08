@@ -32,8 +32,6 @@ const routes: Routes = [
 
   { path: 'Products', component: AllProductsComponent },
   { path: 'Products/:cid', component: AllProductsComponent },
-
-  // { path: 'productDetails', component: ProductDetailsComponent },
   { path: 'productDetails/:pid', component: ProductDetailsComponent },
   {
     path: 'admin',

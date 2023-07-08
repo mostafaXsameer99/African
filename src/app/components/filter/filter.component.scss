@@ -1,10 +1,10 @@
-.search-container {
-  position: relative;
-  margin: 10px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// .search-container {
+//   position: relative;
+//   margin: 10px 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
 form {
   display: flex;
@@ -14,44 +14,44 @@ form {
   width: 100%;
 }
 
-#search-input {
-  font-size: 16px;
-  padding: 10px 10px 10px 40px;
-  width: 100%;
-  height: 30px;
-  max-width: 300px;
-  border: none;
-  border-radius: 30px;
-  box-sizing: border-box;
-  background-color: #f2f2f2;
+// #search-input {
+//   font-size: 16px;
+//   padding: 10px 10px 10px 40px;
+//   width: 100%;
+//   height: 30px;
+//   max-width: 300px;
+//   border: none;
+//   border-radius: 30px;
+//   box-sizing: border-box;
+//   background-color: #f2f2f2;
 
-  // background-image: url('search-icon.png');
-  background-repeat: no-repeat;
-  background-position: 10px 50%;
-  transition: 0.2s ease all;
-}
+//   // background-image: url('search-icon.png');
+//   background-repeat: no-repeat;
+//   background-position: 10px 50%;
+//   transition: 0.2s ease all;
+// }
 
-#search-input:focus {
-  outline: none;
-  width: 100%;
-  max-width: 400px;
-  background-color: #fff;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
-}
+// #search-input:focus {
+//   outline: none;
+//   width: 100%;
+//   max-width: 400px;
+//   background-color: #fff;
+//   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+// }
 
 .collapsible-button {
   background-color: #f5f5f5;
   border: none;
-  color: #333;
+  // color: #333;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.8rem;
   text-align: left;
   width: 100%;
 }
 
-.collapsible-button:hover {
-  background-color: #ddd;
-}
+// .collapsible-button:hover {
+//   background-color: #ddd; 
+// }
 
 .collapsible-content {
   overflow: hidden;

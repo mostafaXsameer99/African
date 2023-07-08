@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AllProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -7,22 +8,26 @@ import { AllProductService } from 'src/app/services/product.service';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent {
-  models = ['Shirt', 'T-Shirts', 'Trousers', 'Knitwear'];
-  colors = ['Red', 'White', 'Black', 'Yellow'];
+  colors = ['White', 'Black', 'Yellow', 'Blue', 'Green', 'Purple'];
   size = ['S', 'M', 'L', 'XL', 'XXL'];
   selectedModel: any;
   selectedColor: any;
   selectedSize: any;
   selectedPrice: any;
-  minPrice :any;
-  maxPrice   :any;
+  minPrice: any;
+  maxPrice: any;
   modelCollapsed = false;
   colorCollapsed = true;
   sizeCollapsed = true;
   PriceRangeCollapsed = true;
+  categoryId: any;
 
-  constructor(private productSer: AllProductService) {}
-  
+
+  constructor(private productSer: AllProductService, private activatedRouter: ActivatedRoute
+  ) {
+    this.categoryId = this.activatedRouter.snapshot.paramMap.get('cid');
+  }
+
   onMinInputChange(event: any) {
     this.minPrice = event.target.value;
     this.selectedPrice = this.minPrice;
@@ -33,7 +38,7 @@ export class FilterComponent {
     this.selectedPrice = this.maxPrice;
   }
 
- 
+
   togglemodelCollapsed() {
     this.modelCollapsed = !this.modelCollapsed;
   }
@@ -53,14 +58,15 @@ export class FilterComponent {
   }
 
   getProductsByFilter() {
-    console.log( this.maxPrice, this.minPrice)
+    // console.log( this.maxPrice, this.minPrice)
     this.productSer
       .getProductsByFilter(
         this.selectedColor,
         this.selectedSize,
         this.maxPrice,
         this.minPrice,
-        this.selectedModel
+        this.selectedModel,
+        this.categoryId
       )
       .subscribe(
         (res: any) => {

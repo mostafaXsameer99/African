@@ -13,17 +13,12 @@ export class HomeComponent {
   }
 
   getProductsByCategory(id: any) {
-    // console.log(id)
     this.productSer.getProductsByCategory(id).subscribe((res: any) => {
       this.productSer.productsArray = res.doc
-      this.router.navigate(["/Products"])
-      // console.log(res.doc)
+      this.router.navigate(["/Products/" + id])
     }, err => {
       this.productSer.productsArray = []
-      // console.log("No Product")
       this.productSer.foundProduct = false
     })
   }
-
-
 }

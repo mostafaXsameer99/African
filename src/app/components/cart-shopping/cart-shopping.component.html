@@ -52,12 +52,12 @@
                   <span class="mx-1" style="font-weight: 500; font-size: larger;">remove</span>
                 </div>
                 <div class="col-md-4">
-                  <i class="fa-solid fa-minus fa-xs" style="cursor: pointer;" *ngIf="item.Quantity>=1"
+                  <i class="fa-solid fa-minus fa-xs" style="cursor: pointer;" *ngIf="item.Quantity>1"
                     (click)="minusOne(item._id)"></i>
                   <span class="mx-2" style="font-weight: 500; font-size: larger;">Quantity {{item.Quantity}}</span>
                   <i class="fa-solid fa-plus fa-xs" style="cursor: pointer;" (click)="plusOne(item._id)"></i>
                 </div>
-                <div class="col-md-4" *ngIf="item.Quantity<=2">
+                <div class="col-md-4" *ngIf="item.quantity<=1">
                   <i class="fa-solid fa-shirt " style="color: #c41f28;"></i>
                   <span class="mx-1" style="font-weight: 500; font-size: larger; color: #c41f28;">last
                     item</span>
