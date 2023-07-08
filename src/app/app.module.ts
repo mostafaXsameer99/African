@@ -43,6 +43,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { OrderDetailsComponent } from './admin/order-details/order-details.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { adminGuardGuard } from './gaurds/admin-guard.guard';
+import { UpdateProductComponent } from './admin/update-product/update-product.component';
 
 
 
@@ -75,6 +76,7 @@ import { adminGuardGuard } from './gaurds/admin-guard.guard';
     UsersComponent,
     OrderDetailsComponent,
     UpdateUserComponent,
+    UpdateProductComponent,
   ],
   imports: [
     BrowserModule,

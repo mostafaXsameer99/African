@@ -38,7 +38,6 @@ export class FilterComponent {
     this.selectedPrice = this.maxPrice;
   }
 
-
   togglemodelCollapsed() {
     this.modelCollapsed = !this.modelCollapsed;
   }

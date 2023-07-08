@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.haederSer.getCategory().subscribe((res: any) => {
       // console.log(res)
       this.categories = res.doc
-      console.log(this.categories[0].name)
+      // console.log(this.categories[0].name)
     })
   }
 
