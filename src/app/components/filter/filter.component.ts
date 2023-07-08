@@ -19,7 +19,7 @@ export class FilterComponent {
   modelCollapsed = false;
   colorCollapsed = true;
   sizeCollapsed = true;
-  PriceRangeCollapsed = true;
+  PriceRangeCollapsed = false;
   categoryId: any;
 
 
@@ -27,17 +27,14 @@ export class FilterComponent {
   ) {
     this.categoryId = this.activatedRouter.snapshot.paramMap.get('cid');
   }
-
   onMinInputChange(event: any) {
     this.minPrice = event.target.value;
     this.selectedPrice = this.minPrice;
   }
-
   onMaxInputChange(event: any) {
     this.maxPrice = event.target.value;
     this.selectedPrice = this.maxPrice;
   }
-
   togglemodelCollapsed() {
     this.modelCollapsed = !this.modelCollapsed;
   }
@@ -50,14 +47,9 @@ export class FilterComponent {
   togglePriceRangeCollapsed() {
     this.PriceRangeCollapsed = !this.PriceRangeCollapsed;
   }
-
   onRadioModelChange(e: any) {
-    // console.log(e.target.value)
-    // console.log(this.selectedPrice)
   }
-
   getProductsByFilter() {
-    // console.log( this.maxPrice, this.minPrice)
     this.productSer
       .getProductsByFilter(
         this.selectedColor,
@@ -69,8 +61,10 @@ export class FilterComponent {
       )
       .subscribe(
         (res: any) => {
-          console.log(res.doc);
           this.productSer.productsArray = res.doc;
+          // this.selectedSize = undefined;
+          // this.selectedColor = undefined;
+          // this.selectedPrice = undefined;
         },
         (error) => {
           this.productSer.productsArray = [];
