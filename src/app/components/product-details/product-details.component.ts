@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductDetailsService } from 'src/app/services/product-details.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
@@ -20,7 +20,8 @@ export class ProductDetailsComponent {
     private activatedRoute: ActivatedRoute,
     private productDetailsSer: ProductDetailsService,
     private shoppingSer: ShoppingCartService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router:Router
   ) {
 
   }
@@ -51,41 +52,43 @@ export class ProductDetailsComponent {
   }
 
   addToCard(product: any) {
-    let OrderObj = {
-      product: product,
-      quantity: 1,
-    };
-    // this.shoppingSer.shoppingCart.push(OrderObj)
-    // console.log(this.shoppingSer.shoppingCart);
-    let inCart = false;
-    if (this.shoppingSer.shoppingCart.length >= 1) {
-      this.shoppingSer.shoppingCart.forEach((item: any) => {
-        if (item.product._id == product._id) {
-          inCart = true;
-          return;
-        }
-      });
-
-      if (inCart) {
+    if (localStorage.getItem('Token')) {
+      let OrderObj = {
+        product: product,
+        quantity: 1,
+      };
+      let inCart = false;
+      if (this.shoppingSer.shoppingCart.length >= 1) {
         this.shoppingSer.shoppingCart.forEach((item: any) => {
           if (item.product._id == product._id) {
-            if (item.quantity < item.product.quantity) {
-              item.quantity++;
-              console.log(item.quantity);
-              console.log(item.product.quantity);
-            } else {
-              this.toastr.error('Quantity Is Not Available');
-            }
+            inCart = true;
             return;
           }
         });
+
+        if (inCart) {
+          this.shoppingSer.shoppingCart.forEach((item: any) => {
+            if (item.product._id == product._id) {
+              if (item.quantity < item.product.quantity) {
+                item.quantity++;
+                console.log(item.quantity);
+                console.log(item.product.quantity);
+              } else {
+                this.toastr.error('Quantity Is Not Available');
+              }
+              return;
+            }
+          });
+        } else {
+          this.shoppingSer.shoppingCart.push(OrderObj);
+        }
       } else {
         this.shoppingSer.shoppingCart.push(OrderObj);
       }
+      this.toastr.success('Product Added Successfully');
     } else {
-      this.shoppingSer.shoppingCart.push(OrderObj);
+      this.toastr.error('login and try again');
+      this.router.navigate(['/login']);
     }
-    // console.log(this.shoppingSer.shoppingCart)
-    this.toastr.success('Product Added Successfully');
   }
 }
