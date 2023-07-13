@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AllProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
+
 
 @Component({
   selector: 'app-all-products',
@@ -13,19 +15,20 @@ export class AllProductsComponent implements OnInit, DoCheck {
   products: any = [];
   errMessage: any;
   cart: any[] = [];
-  isAdded:boolean=false
-  catID:any
+  isAdded: boolean = false
+  catID: any
   currentPage = 1;
   productsPerPage = 8;
 
   constructor(
     private service: AllProductService,
-    private shoppingSer:ShoppingCartService,
-    private toastr:ToastrService,
-    private activatedRouter:ActivatedRoute
+    private shoppingSer: ShoppingCartService,
+    private toastr: ToastrService,
+    private activatedRouter: ActivatedRoute,
+    // private scrollToService: ScrollToService
   ) {
   }
-  
+
   ngDoCheck(): void {
     this.products = this.service.productsArray;
   }
@@ -33,17 +36,17 @@ export class AllProductsComponent implements OnInit, DoCheck {
   ngOnInit(): void {
     this.catID = this.activatedRouter.snapshot.paramMap.get('cid');
     console.log(this.catID)
-    if(!this.catID){
+    if (!this.catID) {
       this.getAllProducts()
-    }else {
+    } else {
       this.getProductsByCategory();
     }
   }
 
   getAllProducts() {
     this.service.getAllProducts().subscribe({
-      next: (data:any) => {
-        this.service.productsArray=data.products
+      next: (data: any) => {
+        this.service.productsArray = data.products
         // this.products = this.service.productsArray;
         this.products = data.products;
         console.log(data.products)
@@ -52,30 +55,30 @@ export class AllProductsComponent implements OnInit, DoCheck {
     });
   }
 
-  getProductsByCategory(){
-    this.service.getProductsByCategory(this.catID).subscribe((res:any)=>{
+  getProductsByCategory() {
+    this.service.getProductsByCategory(this.catID).subscribe((res: any) => {
       console.log(res)
       this.products = res.doc;
-      this.service.productsArray=res.doc
+      this.service.productsArray = res.doc
     })
   }
 
   addToCart(event: any) {
     let OrderObj = {
-      product:event,
-      quantity:1
+      product: event,
+      quantity: 1
     }
     // this.shoppingSer.shoppingCart.push(OrderObj)
     console.log(this.shoppingSer.shoppingCart)
     let inCart = false
-    if(this.shoppingSer.shoppingCart.length>=1){
-      this.shoppingSer.shoppingCart.forEach((item:any)=>{
-        if(item.product._id == event._id){
-          inCart=true
+    if (this.shoppingSer.shoppingCart.length >= 1) {
+      this.shoppingSer.shoppingCart.forEach((item: any) => {
+        if (item.product._id == event._id) {
+          inCart = true
           return
         }
       })
-      if(inCart){
+      if (inCart) {
         this.shoppingSer.shoppingCart.forEach((item: any) => {
           if (item.product._id == event._id) {
             if (item.quantity < item.product.quantity) {
@@ -88,10 +91,10 @@ export class AllProductsComponent implements OnInit, DoCheck {
             return;
           }
         });
-      }else {
+      } else {
         this.shoppingSer.shoppingCart.push(OrderObj);
       }
-    }else{
+    } else {
       this.shoppingSer.shoppingCart.push(OrderObj)
     }
     this.toastr.success("Product Added Successfully")
@@ -99,10 +102,12 @@ export class AllProductsComponent implements OnInit, DoCheck {
 
   next() {
     this.currentPage++;
+    // this.scrollTo();
   }
 
   prev() {
     this.currentPage--;
+    // this.scrollTo();
   }
 
   isPrevDisabled() {
@@ -112,4 +117,7 @@ export class AllProductsComponent implements OnInit, DoCheck {
   isNextDisabled() {
     return this.currentPage === Math.ceil(this.products.length / this.productsPerPage);
   }
+  // scrollTo() {
+  //   this.scrollToService.scrollTo({ target: 'top', duration: 500 });
+  // }
 }
