@@ -10,6 +10,7 @@ import {
 } from '@angular/material/dialog';
 import { AddNewProductComponent } from '../add-new-product/add-new-product.component';
 import { UpdateProductComponent } from '../update-product/update-product.component';
+import { HeaderService } from 'src/app/services/header.service';
 
 @Component({
   selector: 'app-add-product',
@@ -18,7 +19,10 @@ import { UpdateProductComponent } from '../update-product/update-product.compone
 })
 export class AddProductComponent implements OnInit {
   products: any[] = [];
+  categories: any[] = [];
   constructor(
+    private service: AllProductService,
+    private headerSer: HeaderService,
     private ProductSer: AllProductService,
     private toastr: ToastrService,
     private router: Router,
@@ -26,20 +30,36 @@ export class AddProductComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.getAllProducts();
+    this.getCategory();
   }
 
   getAllProducts() {
     this.ProductSer.getAllProducts().subscribe((res: any) => {
-      console.log(res.products)
       this.products = res.products;
     });
   }
 
+  getCategory() {
+    this.headerSer.getCategory().subscribe((res: any) => {
+      // console.log(res.doc);
+      this.categories = res.doc;
+    });
+  }
+  getProductsByCayegory(e: any) {
+    if (e.target.value == 'All') {
+      this.getAllProducts();
+    } else {
+      this.service
+        .getProductsByCategory(e.target.value)
+        .subscribe((res: any) => {
+          this.products = res.doc;
+        });
+    }
+  }
+
   deleteProduct(id: any) {
-    // console.log(id)
     this.ProductSer.deleteProduct(id).subscribe((res: any) => {
       this.toastr.success(res.message);
-      // console.log(res)
       this.getAllProducts();
     });
   }
@@ -51,16 +71,16 @@ export class AddProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if(result == true) {
+      if (result == true) {
         this.getAllProducts();
       }
     });
   }
 
-  addNewProduct(){
+  addNewProduct() {
     const dialogRef = this.dialog.open(AddNewProductComponent, {
-      width: '80%',
-      height: '100%',
+      width: '70%',
+      height: '70%',
       disableClose: true,
     });
 
@@ -69,5 +89,14 @@ export class AddProductComponent implements OnInit {
         this.getAllProducts();
       }
     });
+  }
+
+  searchProducts(e: any) {
+    // console.log(ali)
+    this.service.getProductBySearch(e.target.value).subscribe(
+      (res: any) => {
+        this.products = res.doc;
+      }
+    );
   }
 }

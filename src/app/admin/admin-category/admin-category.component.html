@@ -7,24 +7,9 @@
           <h5 class="fs-5">{{category.name}}</h5>
         </td>
         <td><i (click)="updateCategory(category)" class="fas fa-edit edit_btn text-primary" data-bs-toggle="modal" data-bs-target="#editcourse1"></i></td>
-        <td><i (click)="deleteCategory(category._id)" class="fa fa-trash remove_btn text-danger"></i></td>
+        <!-- <td><i (click)="deleteCategory(category._id)" class="fa fa-trash remove_btn text-danger"></i></td> -->
       </tr>
     </tbody>
   </table>
-
-
-
-
-  <!-- not fount categories -->
-  <div class="d-flex align-items-center justify-content-center" *ngIf="!categories.length">
-    <div class="text-center">
-      <h1 class="display-1 fw-bold">404</h1>
-      <p class="fs-3"> <span class="text-danger">Opps!</span> Categories not found.</p>
-      <p class="lead">
-        The Categories you’re looking for doesn’t exist.
-      </p>
-      <a [routerLink]="['/Products']" class="btn btn-primary">Go Home</a>
-    </div>
-  </div>
   <button (click)="addNewCategory()" class="btn btn-success">Add New Category</button>
 </section>

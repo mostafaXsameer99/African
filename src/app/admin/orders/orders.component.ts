@@ -22,8 +22,6 @@ export class OrdersComponent implements OnInit {
 
   getAllOrders() {
     this.orderSer.getAllOrders().subscribe((res: any) => {
-      // console.log(res.message[0].product[0]);
-      console.log(res.message)
       this.orders = res.message;
     });
   }
@@ -39,5 +37,27 @@ export class OrdersComponent implements OnInit {
       if (result == true) {
       }
     });
+  }
+  changeOrderStatus(id:any,state:any){
+    if(state === "in progress"){
+      let model={
+        status:'Done'
+      }
+      this.orderSer.changeOrderStatus(model,id).subscribe((res:any)=>{
+        this.getAllOrders()
+      })
+    }
+  }
+
+  getCurrentOrders(e:any){
+    console.log(e.target.value)
+    if(e.target.value === "All"){
+      this.getAllOrders();
+    }else {
+      this.orderSer.getOrderByStatus(e.target.value).subscribe((res: any) => {
+        console.log(res);
+        this.orders=res.doc
+      });
+    }
   }
 }

@@ -1,4 +1,23 @@
 <section class="table_section container">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="prodCat" class="form-label">Category</label>
+      <select (change)="getProductsByCayegory($event)" class="form-select" id="prodCat" aria-label="Default select example">
+        <option  value="All" selected>All</option>
+        <option *ngFor="let cat of categories" value="{{cat._id}}">{{cat.name}}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="productSearch" class="form-label">Search</label>
+      <form class="d-flex" role="search">
+
+        <input #search type="search" class="form-control" id="productSearch" aria-label="Search" (change)="searchProducts($event)">
+        <!-- <input #search class=" me-2 no-outline" type="search" placeholder="Search" aria-label="Search"> -->
+        <button class="btn" type="submit" (click)="searchProducts(search.value)"><i
+            class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+      </form>
+    </div>
+  </div>
   <h2 class="mt-3">Products</h2>
   <table class="table border-top mt-3">
     <tbody>
@@ -14,29 +33,15 @@
           <h6 class="fs-5 table_students">{{product.quantity}}</h6>
         </td>
         <td class="align-middle">
-          <h6 class="fs-5 table_price" style="color: #c41f28;">{{product.price}} EGP</h6>
+          <h6 class="fs-5 table_price">{{product.price}}$</h6>
         </td>
         <td class="align-middle"><i class="fas fa-edit edit_btn text-primary" (click)="updateProduct(product)"
             data-bs-toggle="modal" data-bs-target="#editcourse1"></i></td>
-        <td class="align-middle"><i (click)="deleteProduct(product._id)" class="fa fa-trash remove_btn text-danger"></i>
-        </td>
+        <!-- <td class="align-middle"><i (click)="deleteProduct(product._id)" class="fa fa-trash remove_btn text-danger"></i>
+        </td> -->
       </tr>
     </tbody>
   </table>
 
-
-
-
-  <!-- not fount product -->
-  <div class="d-flex align-items-center justify-content-center" *ngIf="!products.length">
-    <div class="text-center">
-      <h1 class="display-1 fw-bold">404</h1>
-      <p class="fs-3"> <span class="text-danger">Opps!</span> Products not found.</p>
-      <p class="lead">
-        The products you’re looking for doesn’t exist.
-      </p>
-      <a [routerLink]="['/Products']" class="btn btn-primary">Go Home</a>
-    </div>
-  </div>
   <button (click)="addNewProduct()" class="btn btn-success mt-4">Add New Product</button>
 </section>

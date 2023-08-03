@@ -1,5 +1,14 @@
 <!-- designs -->
 <section class="table_section container">
+  <div class="col-md-6">
+    <label for="prodCat" class="form-label">Category</label>
+    <select (change)="getCurrentOrders($event)" class="form-select" id="prodCat" aria-label="Default select example">
+      <option value="All" selected>All</option>
+      <option value="Done">Done</option>
+      <option value="in progress">in progress</option>
+      <option value="in check">in check</option>
+    </select>
+  </div>
   <h2 class="mt-3">Orders</h2>
   <table class="table border-top mt-3">
     <tbody>
@@ -13,6 +22,14 @@
         </td>
         <td>
           <h6 class="fs-5 table_students">{{order.product.length}} Products</h6>
+        </td>
+        <td>
+          <h6 class="fs-5 table_students" style="cursor: pointer;"(click)="changeOrderStatus(order._id,order.status)">
+            <i class="fa-solid fa-check" *ngIf="order.status=== 'Done'"></i>
+            <i class="fa-solid fa-spinner" *ngIf="order.status=== 'in progress'"></i>
+            <i class="fa-solid fa-pen" *ngIf="order.status=== 'in check'"></i>
+            <!-- {{order.status}} -->
+          </h6>
         </td>
         <td >
           <!-- <h6 class="fs-5 table_price"></h6> -->
@@ -28,7 +45,7 @@
 
   <!-- not fount orders -->
 
-  <div class="d-flex align-items-center justify-content-center" *ngIf="!orders.length">
+  <!-- <div class="d-flex align-items-center justify-content-center" *ngIf="!orders.length">
     <div class="text-center">
       <h1 class="display-1 fw-bold">404</h1>
       <p class="fs-3"> <span class="text-danger">Opps!</span> Orders not found.</p>
@@ -37,5 +54,5 @@
       </p>
       <a [routerLink]="['/Products']" class="btn btn-primary">Go Home</a>
     </div>
-  </div>
+  </div> -->
 </section>
